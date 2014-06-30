@@ -1,4 +1,6 @@
 class Admin::GalleriesController < AdminController
+  before_action :admin_navigation
+
   def index
     @galleries = Gallery.order("created_at desc")
   end
@@ -26,6 +28,10 @@ class Admin::GalleriesController < AdminController
 
   def gallery_params
     params.require(:gallery).permit(:name)
+  end
+
+  def admin_navigation
+    @navigation = "galleries"
   end
 
 end

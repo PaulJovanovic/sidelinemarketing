@@ -1,4 +1,6 @@
 class Admin::EventPurchasesController < AdminController
+  before_action :admin_navigation
+
   def new
     @event = Event.find(params[:event_id])
     @purchase = EventPurchase.new
@@ -37,5 +39,9 @@ class Admin::EventPurchasesController < AdminController
 
   def event_purchase_params
     params.require(:event_purchase).permit(:name, :description, options_attributes: [:id, :quantity, :price])
+  end
+
+  def admin_navigation
+    @navigation = "events"
   end
 end

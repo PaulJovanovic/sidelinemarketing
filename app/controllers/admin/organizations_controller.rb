@@ -1,4 +1,6 @@
 class Admin::OrganizationsController < AdminController
+  before_action :admin_navigation
+
   def index
     @organizations = Organization.all
   end
@@ -41,4 +43,9 @@ class Admin::OrganizationsController < AdminController
   def organization_params
     params.require(:organization).permit(:name)
   end
+
+  def admin_navigation
+    @navigation = "athletes"
+  end
+
 end

@@ -1,4 +1,6 @@
 class Admin::PhotosController < AdminController
+  before_action :admin_navigation
+
   def create
     @photo = Photo.new(photo_params)
 
@@ -29,5 +31,9 @@ class Admin::PhotosController < AdminController
 
   def photo_params
     params.require(:photo).permit(:attachment, :assetable_type, :assetable_id)
+  end
+
+  def admin_navigation
+    @navigation = "galleries"
   end
 end

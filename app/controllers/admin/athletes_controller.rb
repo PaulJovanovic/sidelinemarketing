@@ -1,4 +1,6 @@
 class Admin::AthletesController < AdminController
+  before_action :admin_navigation
+
   def new
     @organization = Organization.find(params[:organization_id])
     @team = Team.find(params[:team_id])
@@ -44,5 +46,9 @@ class Admin::AthletesController < AdminController
 
   def athlete_params
     params.require(:athlete).permit(:name)
+  end
+
+  def admin_navigation
+    @navigation = "athletes"
   end
 end

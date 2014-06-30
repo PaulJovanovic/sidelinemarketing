@@ -1,4 +1,6 @@
 class Admin::EventsController < AdminController
+  before_action :admin_navigation
+
   def index
     @events = Event.all
   end
@@ -43,5 +45,9 @@ class Admin::EventsController < AdminController
 
   def event_params
     params.require(:event).permit(:name, :date, :start_time, :end_time, :description, :private, :location_name, :location_street, :location_city, :location_state, :location_zip, poster_attributes: [:id, :attachment])
+  end
+
+  def admin_navigation
+    @navigation = "events"
   end
 end
