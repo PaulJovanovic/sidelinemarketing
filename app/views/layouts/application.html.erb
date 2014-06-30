@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sideline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="dvxl lhxl bg-1">
+    <nav class="navbar navbar-default zxl" role="navigation">
+      <div class="container phm">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <button type="button" class="navbar-toggle mrn" style="margin-top:12px" data-toggle="collapse" data-target="#navbar-actions">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to root_path do %>
+          <%= image_tag "nav_logo.png" %>
+        <% end %>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right prn" id="navbar-actions">
+          <ul class="nav navbar-nav c-16 fss fwl italicize mhn">
+            <li class="plxxxs">
+              <%= link_to "EVENTS", events_path %>
+            </li>
+            <li class="plxxxs hidden-xs">
+              <%= image_tag "nav_slant.png" %>
+            </li>
+            <li class="plxxxs">
+              <%= link_to "ATHLETES", athletes_path %>
+            </li>
+            <li class="plxxxs hidden-xs">
+              <%= image_tag "nav_slant.png" %>
+            </li>
+            <li class="plxxxs">
+              <%= link_to "GALLERY", galleries_path %>
+            </li>
+            <li class="plxxxs hidden-xs">
+              <%= image_tag "nav_slant.png" %>
+            </li>
+            <li class="plxxxs">
+              <%= link_to "CONTACT", contact_path %>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </div>
+  <div class="container phm pbxxxxl mtxs">
+    <%= yield %>
+  </div>
+</body>
+</html>

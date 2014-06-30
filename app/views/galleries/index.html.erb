@@ -1,0 +1,16 @@
+<div class="row nmhl">
+  <% @galleries.each do |gallery| %>
+    <% if gallery.photos.any? %>
+      <div class="col-sm-4 phl mtl">
+        <%= link_to gallery_path(gallery) do %>
+          <div class="relative">
+            <%= image_tag gallery.photos.first.attachment.url(:medium), class: "img-responsive" %>
+            <div class="absolute right bottom mbl paxxxs bg-1 c-16 fsxxs italicize upcase">
+              <%= gallery.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

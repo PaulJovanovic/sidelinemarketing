@@ -1,0 +1,103 @@
+<div class="dvm lhm">
+  <%= link_to "Orders", admin_orders_path, class: "c-red" %> &gt; #<%= @order.id %>
+</div>
+<div class="row nmhxs nmts">
+  <div class="col-sm-6 phxs mts fsxs">
+    <div class="fwl italicize">
+      ORDER SUMMARY
+    </div>
+    <div>
+      Event: <%= @order.event.name %>
+    </div>
+    <div class="paxs">
+      <div class="row nmhxxxs">
+        <div class="col-xs-6 phxxxs">
+          Option
+        </div>
+        <div class="col-xs-2 phxxxs">
+          Quantity
+        </div>
+        <div class="col-xs-4 phxxxs text-right">
+          Price
+        </div>
+      </div>
+    </div>
+    <% @order.event_purchase_options.each_with_index do |option, index| %>
+      <% color = index % 2 == 0 ? "bg-13" : "bg-12" %>
+      <div class="paxs <%= color %>">
+        <div class="row nmhxxxs">
+          <div class="col-xs-6 phxxxs">
+            <%= option.event_purchase.name %>
+          </div>
+          <div class="col-xs-2 phxxxs">
+            <%= option.quantity %>
+          </div>
+          <div class="col-xs-4 phxxxs text-right">
+            <%= number_to_currency option.price %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="paxs">
+      <div class="row nmhxxxs fwl">
+        <div class="col-xs-8 phxxxs">
+          Total Spent
+        </div>
+        <div class="col-xs-4 phxxxs text-right">
+          <%= number_to_currency @order.price %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 phxs mts fsxs">
+    <div class="fwl italicize">
+      CONTACT INFORMATION
+    </div>
+    <div>
+      Email: <%= @order.email %>
+    </div>
+    <div>
+      Phone: <%= @order.phone_number %>
+    </div>
+  </div>
+</div>
+<div class="row nmhxs">
+  <div class="col-sm-6 phxs mts fsxs">
+    <div class="fwl italicize">
+      BILLING ADDRESS
+    </div>
+    <div>
+      <%= @order.billing_address.first_name %> <%= @order.billing_address.last_name %>
+    </div>
+    <div>
+      <%= @order.billing_address.address_1 %>
+    </div>
+    <% if @order.billing_address.address_2.present? %>
+      <div>
+        <%= @order.billing_address.address_2 %>
+      </div>
+    <% end %>
+    <div>
+      <%= @order.billing_address.city %>, <%= @order.billing_address.state %> <%= @order.billing_address.zip %>
+    </div>
+  </div>
+  <div class="col-sm-6 phxs mts fsxs">
+    <div class="fwl italicize">
+      SHIPPING ADDRESS
+    </div>
+    <div>
+      <%= @order.shipping_address.first_name %> <%= @order.shipping_address.last_name %>
+    </div>
+    <div>
+      <%= @order.shipping_address.address_1 %>
+    </div>
+    <% if @order.shipping_address.address_2.present? %>
+      <div>
+        <%= @order.shipping_address.address_2 %>
+      </div>
+    <% end %>
+    <div>
+      <%= @order.shipping_address.city %>, <%= @order.shipping_address.state %> <%= @order.shipping_address.zip %>
+    </div>
+  </div>
+</div>

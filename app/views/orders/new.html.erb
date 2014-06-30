@@ -1,0 +1,152 @@
+<%= form_for [@event, @order], html: { class: "js-order-create" } do |f| %>
+  <div class="row nmhxs">
+    <div class="col-sm-7 phxs mtm">
+      <% if @order.errors.any? %>
+        <div class="pas mbs bg-16 bss bwas bc-12">
+          <% @order.errors.full_messages.each do |message| %>
+            <div class="mtxxxs c-red"><%= message %></div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="fss fwl italicize">CONTACT INFORMATION</div>
+      <div class="row nmhxs">
+        <div class="col-sm-6 phxs mts">
+          <%= f.text_field :email, placeholder: "Email address", class: "paxxxs bss bwas bc-8 full-width" %>
+        </div>
+        <div class="col-sm-6 phxs mts">
+          <%= f.text_field :phone_number, placeholder: "Phone Number", class: "paxxxs bss bwas bc-8 full-width" %>
+        </div>
+      </div>
+      <div class="mts fss fwl italicize">BILLING ADDRESS</div>
+      <%= f.fields_for :billing_address do |billing_address_fields| %>
+        <div class="row nmhxs">
+          <div class="col-sm-6 phxs mts">
+            <%= billing_address_fields.text_field :first_name, placeholder: "First name", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+          <div class="col-sm-6 phxs mts">
+            <%= billing_address_fields.text_field :last_name, placeholder: "Last name", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+        </div>
+        <div class="row nmhxs">
+          <div class="col-sm-6 phxs mts">
+            <%= billing_address_fields.text_field :address_1, placeholder: "Address 1", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+          <div class="col-sm-6 phxs mts">
+            <%= billing_address_fields.text_field :address_2, placeholder: "Address 2", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+        </div>
+        <div class="row nmhxs">
+          <div class="col-sm-6 phxs mts">
+            <%= billing_address_fields.text_field :city, placeholder: "City", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+          <div class="col-sm-6 phxs mts">
+            <div class="row nmhxs">
+              <div class="col-xs-6 phxs">
+                <%= billing_address_fields.select :state, options_for_select(us_states), {prompt: "State"}, class: "dvs paxs bg-16 bss bwas bc-8 full-width" %>
+              </div>
+              <div class="col-xs-6 phxs">
+                <%= billing_address_fields.text_field :zip, placeholder: "Zip code", class: "paxxxs bss bwas bc-8 full-width" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="mts fss fwl italicize">SHIPPING ADDRESS</div>
+      <%= f.fields_for :shipping_address do |shipping_address_fields| %>
+        <div class="row nmhxs">
+          <div class="col-sm-6 phxs mts">
+            <%= shipping_address_fields.text_field :first_name, placeholder: "First name", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+          <div class="col-sm-6 phxs mts">
+            <%= shipping_address_fields.text_field :last_name, placeholder: "Last name", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+        </div>
+        <div class="row nmhxs">
+          <div class="col-sm-6 phxs mts">
+            <%= shipping_address_fields.text_field :address_1, placeholder: "Address 1", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+          <div class="col-sm-6 phxs mts">
+            <%= shipping_address_fields.text_field :address_2, placeholder: "Address 2", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+        </div>
+        <div class="row nmhxs">
+          <div class="col-sm-6 phxs mts">
+            <%= shipping_address_fields.text_field :city, placeholder: "City", class: "paxxxs bss bwas bc-8 full-width" %>
+          </div>
+          <div class="col-sm-6 phxs mts">
+            <div class="row nmhxs">
+              <div class="col-xs-6 phxs">
+                <%= shipping_address_fields.select :state, options_for_select(us_states), {prompt: "State"}, class: "dvs paxs bg-16 bss bwas bc-8 full-width" %>
+              </div>
+              <div class="col-xs-6 phxs">
+                <%= shipping_address_fields.text_field :zip, placeholder: "Zip code", class: "paxxxs bss bwas bc-8 full-width" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="mts fss fwl italicize">PAYMENT</div>
+      <div class="row nmhxs">
+        <div class="col-sm-6 phxs mts">
+          <%= f.text_field :credit_card_name, placeholder: "Name (as it appear on card)", class: "paxxxs bss bwas bc-8 full-width" %>
+        </div>
+        <div class="col-sm-6 phxs mts">
+          <%= f.text_field :credit_card_number, placeholder: "Card Number", class: "paxxxs bss bwas bc-8 full-width js-credit-card-number" %>
+        </div>
+      </div>
+      <div class="row nmhxs">
+        <div class="col-sm-4 phxs mts">
+          <%= f.select :credit_card_expiration_month, options_for_select(select_months), {prompt: "Exp Month"}, class: "dvs paxs bg-16 bss bwas bc-8 full-width js-credit-card-expiration-month" %>
+        </div>
+        <div class="col-sm-4 phxs mts">
+          <%= f.select :credit_card_expiration_year, options_for_select(select_years), {prompt: "Exp Year"}, class: "dvs paxs bg-16 bss bwas bc-8 full-width js-credit-card-expiration-year" %>
+        </div>
+        <div class="col-sm-4 phxs mts">
+          <%= f.text_field :credit_card_security_code, placeholder: "Security Code (on back)", class: "paxxxs bss bwas bc-8 full-width js-credit-card-security-code" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5 phxs mtm c-1">
+      <div class="fsm fwl italicize upcase">
+        <%= @event.name %>
+      </div>
+      <div class="mtxxxs fsxs fwl">
+        <div>
+          <%= @event.date.strftime("%m/%d/%Y") %>
+        </div>
+        <div class="upcase">
+          <%= @event.start_time %> - <%= @event.end_time %>
+        </div>
+      </div>
+      <div class="mts fsxs fwl">
+        <div>
+          <%= @event.location_name %>
+        </div>
+        <div>
+          <%= @event.location_street %>
+        </div>
+        <div>
+          <%= @event.location_city %>, <%= @event.location_state %>, <%= @event.location_zip %>
+        </div>
+      </div>
+      <div class="mts">
+        <% @order.event_purchase_options.each_with_index do |option| %>
+          <%= f.hidden_field :event_purchase_options, value: option.id, name: "order[event_purchase_option_ids][]" %>
+          <div class="fsxs fwl italicize upcase">
+            (<%= option.quantity %>) <%= option.event_purchase.name %> <span class="c-red"><%= number_to_currency option.price %></span>
+          </div>
+        <% end %>
+      </div>
+      <div class="mts">
+        <div class="fsm fwl italicize">
+          TOTAL <span class="c-red"><%= number_to_currency @order.price %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row nmhxxs">
+    <div class="col-sm-7 phxxs mts">
+      <%= f.submit "SUBMIT PURCHASE", class: "btn btn-primary full-width" %>
+    </div>
+  </div>
+<% end %>

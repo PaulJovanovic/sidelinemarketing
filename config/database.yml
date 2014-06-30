@@ -1,0 +1,11 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: sideline_dev
+  host: localhost
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: sideline_test
+  host: localhost

@@ -1,0 +1,26 @@
+<div class="dvm lhm">
+  Galleries
+</div>
+<div class="row nmhxxs">
+  <div class="col-sm-8 phxxs">
+    <%= link_to "Add Gallery", new_admin_gallery_path, class: "btn btn-primary" %>
+    <div class="mtm">
+      <% @galleries.each_with_index do |gallery, index| %>
+        <div class="pas<%= index % 2 == 0 ? " bg-10" : " bg-12" %>">
+          <table class="full-width">
+            <tr>
+              <td class="fwl">
+                <%= link_to gallery.name, admin_gallery_path(gallery) %>
+              </td>
+              <td class="text-right">
+                <%= link_to edit_admin_gallery_path(gallery) do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="dvm lhm">
+  Orders
+</div>
+<div class="phxs">
+  <div class="row nmhxxxs">
+    <div class="col-xs-2 col-sm-1 phxxxs">
+      #
+    </div>
+    <div class="col-xs-2 phxxxs hidden-xs">
+      Date
+    </div>
+    <div class="col-xs-3 phxxxs hidden-xs">
+      Event
+    </div>
+    <div class="col-xs-8 col-sm-4 phxxxs">
+      Email
+    </div>
+    <div class="col-xs-2 phxxxs">
+      Price
+    </div>
+  </div>
+</div>
+<div class="mtxs">
+  <% @orders.each_with_index do |order, index| %>
+    <% color = index % 2 == 0 ? "bg-13" : "bg-12" %>
+    <div class="paxs <%= color %>">
+      <div class="row nmhxxxs">
+        <div class="col-xs-2 col-sm-1 phxxxs">
+          <%= link_to order.id, admin_order_path(order), class: "c-red" %>
+        </div>
+        <div class="col-xs-2 phxxxs hidden-xs">
+          <%= order.created_at.strftime("%m/%d/%Y") %>
+        </div>
+        <div class="col-xs-3 phxxxs hidden-xs">
+          <%= link_to order.event.name.truncate(24), event_path(order.event), class: "c-red" %>
+        </div>
+        <div class="col-xs-8 col-sm-4 phxxxs">
+          <%= order.email.truncate(30) %>
+        </div>
+        <div class="col-xs-2 phxxxs">
+          <%= number_to_currency order.price %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

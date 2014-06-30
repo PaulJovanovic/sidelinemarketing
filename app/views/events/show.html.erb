@@ -1,0 +1,64 @@
+<div class="dvxs lhxs mtxs c-1 fsxxxs fwl italicize">
+  <%= link_to events_path do %>
+    <i class="fa fa-caret-left"></i> VIEW ALL EVENTS
+  <% end %>
+</div>
+<div class="row nmhs nmts">
+  <div class="col-sm-7 phs mts">
+    <%= image_tag @event.poster.url(:original), class: "img-responsive" %>
+  </div>
+  <div class="col-sm-5 phs mts">
+    <div class="fss fwl italicize upcase">
+      <%= @event.name %>
+    </div>
+    <div class="mtxxxs fsxxs fwl">
+      <div>
+        <%= @event.date.strftime("%m/%d/%Y") %>
+      </div>
+      <div>
+        <%= @event.start_time %> - <%= @event.end_time %>
+      </div>
+    </div>
+    <div class="mtxs fwl">
+      <div>
+        <%= @event.location_name %>
+      </div>
+      <div class="">
+        <%= @event.location_street %>
+      </div>
+      <div class="">
+        <%= @event.location_city %>, <%= @event.location_state %>, <%= @event.location_zip %>
+      </div>
+    </div>
+    <div class="mtl">
+      <%= @event.description_as_html.html_safe %>
+    </div>
+    <div class="mtl bss bwtm bc-12"></div>
+    <%= form_for :order, url: new_event_order_path(@event), method: :get do |f| %>
+      <% @event.purchases.each do |purchase| %>
+        <div class="mtl">
+          <div class="mtxxxs-plus fsxs fwl italicize upcase">
+            <%= purchase.name %>
+          </div>
+          <div class="mtxxxs-plus c-8 fsxs italicize upcase">
+            <%= purchase.description %>
+          </div>
+          <%= f.select :event_purchase_options, nil, {}, class: "dvs mtxxxs-plus paxs bg-16 bss bwas bc-1 js-event-purchase", name: "event[event_purchase_options][]"  do  %>
+            <option value="" data-price="0.00" selected="selected">Quantity</option>
+            <% purchase.options.each do |option| %>
+              <option value="<%= option.id %>" data-price="<%= option.price %>"><%= "#{option.quantity} #{number_to_currency option.price}" %></option>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="mtl fsm fwl c-1 italicize">
+        TOTAL <span class="c-red">$<span class="js-event-purchase-total">0.00</span></span>
+      </div>
+      <div class="row nmhxxs">
+        <div class="col-sm-5 col-md-4 phxxs mtxs">
+          <%= f.submit "PURCHASE", class: "btn btn-primary full-width" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

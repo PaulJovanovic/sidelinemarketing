@@ -1,0 +1,32 @@
+<% array = [] %>
+<% @organizations.each do |organization| %>
+  <% array << "<div class='c-red fwl fsxs italicize'>#{organization.name}</div>" %>
+  <% organization.teams.order(:placement).each do |team| %>
+    <% array << "<div class='c-1 fsxxs fwl'>#{team.name}</div>" %>
+    <% team.athletes.order(:name).each do |athlete| %>
+      <% array << "<div class='c-1 fsxxs'>#{athlete.name}</div>" %>
+    <% end %>
+  <% end %>
+<% end %>
+<% max = (array.length / 4.0).ceil %>
+<% column_count = [max,max,max,max] %>
+<% if array.length % 4 %>
+  <% (4 - array.length % 4).times do |i| %>
+    <% column_count[3-i] = column_count[3-i] - 1 %>
+  <% end %>
+<% end %>
+<div class="dvxs lhxs mtxs c-8 fsxxxs fwl italicize"></div>
+<div class="bg-8" style="height:500px">
+</div>
+<div class="mts c-8 fsxxxs italicize">
+  ATHLETES WE HAVE WORKED WITH
+</div>
+<div class="row nmhxxs mts">
+  <% column_count.each do |count| %>
+    <div class="col-sm-3 phxxs">
+      <% array.shift(count).each do |item| %>
+        <%= item.html_safe %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

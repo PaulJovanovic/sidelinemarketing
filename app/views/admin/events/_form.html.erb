@@ -1,0 +1,64 @@
+<% if @event.errors.any? %>
+  <div class="pas mbs bg-16 bss bwas bc-12">
+    <% @event.errors.full_messages.each do |message| %>
+      <div class="mtxxxs c-red"><%= message %></div>
+    <% end %>
+  </div>
+<% end %>
+<%= form_for [:admin, @event], html: {:multipart => true} do |f| %>
+  <div class="row nmhxxs mts-plus">
+    <% if @event.poster.attachment? %>
+      <div class="col-sm-6 phxxs">
+        <%= image_tag @event.poster.url(:original), class: "img-responsive" %>
+      </div>
+    <% end %>
+    <div class="col-sm-6 phxxs">
+      <%= f.fields_for :poster do |poster_fields| %>
+        <%= poster_fields.file_field :attachment %>
+      <% end %>
+    </div>
+  </div>
+  <div class="mts-plus">
+    <%= f.text_field :name, placeholder: "Name", class: "paxxxs bss bwas bc-12 full-width" %>
+  </div>
+  <div class="row nmhxxs mts-plus">
+    <div class="col-xs-4 phxxs">
+      <input type="text" class="paxxxs bss bwas bc-12 full-width js-datepicker" placeholder="Date" value="<%= @event.date.strftime("%m/%d/%Y") if @event.date.present? %>">
+      <%= f.hidden_field :date %>
+    </div>
+    <div class="col-xs-4 phxxs">
+      <%= f.select :start_time, select_times, { prompt: "Start Time" }, class: "dvs paxs bss bwas bc-12 full-width" %>
+    </div>
+    <div class="col-xs-4 phxxs">
+      <%= f.select :end_time, select_times, { prompt: "End Time" }, class: "dvs paxs bss bwas bc-12 full-width" %>
+    </div>
+  </div>
+  <div class="mts-plus">
+    <%= f.text_area :description, placeholder: "Description", class: "paxxxs bss bwas bc-12 full-width dvxxxxl" %>
+  </div>
+  <div class="mts-plus">
+    <%= f.check_box :private %>
+    <%= f.label :private, "Private Event" %>
+  </div>
+  <div class="fss fwl mts-plus">LOCATION</div>
+  <div class="mts-plus">
+    <%= f.text_field :location_name, placeholder: "Name", class: "paxxxs bss bwas bc-12 full-width" %>
+  </div>
+  <div class="mts-plus">
+    <%= f.text_field :location_street, placeholder: "Street", class: "paxxxs bss bwas bc-12 full-width" %>
+  </div>
+  <div class="row nmhxxs mts-plus">
+    <div class="col-xs-4 phxxs">
+      <%= f.text_field :location_city, placeholder: "City", class: "paxxxs bss bwas bc-12 full-width" %>
+    </div>
+    <div class="col-xs-4 phxxs">
+      <%= f.text_field :location_state, placeholder: "State", class: "paxxxs bss bwas bc-12 full-width" %>
+    </div>
+    <div class="col-xs-4 phxxs">
+      <%= f.text_field :location_zip, placeholder: "Zip", class: "paxxxs bss bwas bc-12 full-width" %>
+    </div>
+  </div>
+  <div class="mts-plus">
+    <%= f.submit class: "btn btn-primary full-width" %>
+  </div>
+<% end %>

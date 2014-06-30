@@ -1,0 +1,21 @@
+<div class="dvxs lhxs mtxs c-1 fsxxxs fwl italicize">
+  <%= link_to galleries_path do %>
+    <i class="fa fa-caret-left"></i> VIEW ALL ALBUMS
+  <% end %>
+</div>
+<div class="row nmhm">
+  <div id="gallery-display" class="col-md-8 phm hidden-xs hidden-sm">
+    <%= image_tag @photos.first.url(:medium), class: "img-responsive" %>
+  </div>
+  <div id="photo-scroller" class="col-md-4 phm">
+    <div class="row nmhxxs nmtxxxs">
+      <% @photos.each do |photo| %>
+        <div class="col-md-6 phxxs mtxxxs">
+          <div class="pointer js-gallery-photo" data-target="#gallery-display">
+            <img class="img-responsive bss bwam bc-16 bc-red-active js-lazyload" data-original=<%= photo.url(:medium) %>/>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

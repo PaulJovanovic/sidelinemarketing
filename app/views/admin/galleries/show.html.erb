@@ -1,0 +1,28 @@
+<div id="progress" class="fixed top left right dvxxxs bg-red hide"></div>
+<div class="dvm lhm">
+  <%= link_to "Galleries", admin_galleries_path, class: "c-red" %> &gt; <%= @gallery.name %>
+</div>
+<div class="row nmhxxs">
+  <div class="col-sm-8 phxxs">
+    <div class="btn btn-primary js-add-photos">Add Photos</div>
+    <div class="hide">
+      <%= form_tag("/admin/photos", method: :post) do %>
+        <%= hidden_field_tag :assetable_type, "Gallery", name: "photo[assetable_type]" %>
+        <%= hidden_field_tag :assetable_type, params[:id], name: "photo[assetable_id]" %>
+        <%= file_field_tag :photo, data: { url: "/admin/photos" }, name: "photo[attachment]", multiple: "", class: "js-add-photos-input" %>
+      <% end %>
+    </div>
+    <div class="row nmhxxs mtxs js-photos-uploaded">
+      <% @photos.each do |photo| %>
+        <div class="col-sm-4 phxxs mtxs js-admin-gallery-photo" data-url=<%= admin_photo_url(photo) %>>
+          <div class="relative">
+            <%= image_tag photo.url(:medium), class: "img-responsive" %>
+            <div class="absolute top right mtxxxs mrxxxs pointer js-admin-gallery-photo-remove">
+              <i class="fa fa-times fss c-red"></i>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

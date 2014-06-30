@@ -1,0 +1,23 @@
+Rails.application.routes.draw do
+  namespace :admin do
+    resources :events do
+      resources :event_purchases
+    end
+    resources :event_purchase_options
+    resources :organizations do
+      resources :teams do
+        resources :athletes
+      end
+    end
+    resources :galleries
+    resources :photos
+    resources :orders
+  end
+  resources :events do
+    resources :orders
+  end
+  resources :athletes
+  resources :galleries
+  get "/contact", to: "home#contact"
+  root to: "home#index"
+end

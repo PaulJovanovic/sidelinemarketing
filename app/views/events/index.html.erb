@@ -1,0 +1,17 @@
+<div class="dvxs lhxs mtxs c-8 fsxxxs italicize">
+  RED INDICATES A PRIVATE EVENT
+</div>
+<div class="row nmhl nmtl">
+  <% @events.each do |event| %>
+    <div class="col-sm-4 phl mtl">
+      <%= link_to event_path(event) do %>
+        <div class="relative">
+          <%= image_tag event.poster.url(:small), class: "img-responsive" %>
+          <div class="absolute right bottom mbl paxxxs bg-1 c-16 fsxxs italicize upcase<%= " bg-red" if event.private? %>">
+            <%= event.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
