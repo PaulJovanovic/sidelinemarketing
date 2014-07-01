@@ -46,7 +46,7 @@
           <%= f.select :event_purchase_options, nil, {}, class: "dvs mtxxxs-plus bg-16 bss bwas bc-1 js-event-purchase", name: "event[event_purchase_options][]"  do  %>
             <option value="" data-price="0.00" selected="selected">Quantity</option>
             <% purchase.options.each do |option| %>
-              <option value="<%= option.id %>" data-price="<%= option.price %>"><%= "#{option.quantity} #{number_to_currency option.price}" %></option>
+              <option value="<%= option.id %>" data-price="<%= option.price %>"><%= "#{option.quantity} - #{number_to_currency option.price}" %></option>
             <% end %>
           <% end %>
         </div>
