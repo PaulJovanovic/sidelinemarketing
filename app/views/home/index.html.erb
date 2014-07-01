@@ -16,7 +16,7 @@
     <div class="dvs hidden-xs"></div>
     <div class="row nmhs mtxs">
       <div class="col-sm-7 phs c-16 fws fss lhs" style="text-shadow: 1px 1px #000000">
-        Sideline Marketing is a full service sports marketing agency. We represent many professional athletes in an effort to organize, support, and promote their charities, as well as supply a platform to increase their brand awareness.
+        <%= @editables.where(name: "Description").last.text %>
       </div>
     </div>
   </div>
@@ -28,10 +28,10 @@
   </div>
   <div class="row nmhs">
     <div class="col-sm-7 phs mtxxs fsxxs lhs">
-      Our mission is to organize, support, and promote professional sports players in their effort to assist their communites in economic and charitable endeavors. We strive to achieve these goals with professional athletes through public speaking, personal appearances, and charitable foundations. Sideline Marketing is dedicated to futhering their philanthropic efforts with honesty and integrity.
+      <%= @editables.where(name: "Paragraph - Left").last.text %>
     </div>
     <div class="col-sm-5 phs mtxxs fsxxs lhs">
-      Our mission is to organize, support, and promote professional sports players in their effort to assist their communites in economic and charitable endeavors. We strive to achieve these goals with professional athletes through public speaking, personal appearances, and charitable foundations. Sideline Marketing is dedicated to futhering their philanthropic efforts with honesty and integrity.
+      <%= @editables.where(name: "Paragraph - Right").last.text %>
     </div>
   </div>
 </div>
