@@ -42,7 +42,7 @@
           <div class="col-sm-6 phxs mts">
             <div class="row nmhxs">
               <div class="col-xs-6 phxs">
-                <%= billing_address_fields.select :state, options_for_select(us_states), {prompt: "State"}, class: "dvs paxs bg-16 bss bwas bc-8 full-width" %>
+                <%= billing_address_fields.select :state, options_for_select(us_states), {prompt: "State"}, class: "dvs bg-16 bss bwas bc-8 full-width" %>
               </div>
               <div class="col-xs-6 phxs">
                 <%= billing_address_fields.text_field :zip, placeholder: "Zip code", class: "paxxxs bss bwas bc-8 full-width" %>
@@ -76,7 +76,7 @@
           <div class="col-sm-6 phxs mts">
             <div class="row nmhxs">
               <div class="col-xs-6 phxs">
-                <%= shipping_address_fields.select :state, options_for_select(us_states), {prompt: "State"}, class: "dvs paxs bg-16 bss bwas bc-8 full-width" %>
+                <%= shipping_address_fields.select :state, options_for_select(us_states), {prompt: "State"}, class: "dvs bg-16 bss bwas bc-8 full-width" %>
               </div>
               <div class="col-xs-6 phxs">
                 <%= shipping_address_fields.text_field :zip, placeholder: "Zip code", class: "paxxxs bss bwas bc-8 full-width" %>
@@ -96,10 +96,10 @@
       </div>
       <div class="row nmhxs">
         <div class="col-sm-4 phxs mts">
-          <%= f.select :credit_card_expiration_month, options_for_select(select_months), {prompt: "Exp Month"}, class: "dvs paxs bg-16 bss bwas bc-8 full-width js-credit-card-expiration-month" %>
+          <%= f.select :credit_card_expiration_month, options_for_select(select_months), {prompt: "Exp Month"}, class: "dvs bg-16 bss bwas bc-8 full-width js-credit-card-expiration-month" %>
         </div>
         <div class="col-sm-4 phxs mts">
-          <%= f.select :credit_card_expiration_year, options_for_select(select_years), {prompt: "Exp Year"}, class: "dvs paxs bg-16 bss bwas bc-8 full-width js-credit-card-expiration-year" %>
+          <%= f.select :credit_card_expiration_year, options_for_select(select_years), {prompt: "Exp Year"}, class: "dvs bg-16 bss bwas bc-8 full-width js-credit-card-expiration-year" %>
         </div>
         <div class="col-sm-4 phxs mts">
           <%= f.text_field :credit_card_security_code, placeholder: "Security Code (on back)", class: "paxxxs bss bwas bc-8 full-width js-credit-card-security-code" %>
