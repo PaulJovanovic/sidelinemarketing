@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140628192939) do
+ActiveRecord::Schema.define(version: 20140701220450) do
 
   create_table "addresses", force: true do |t|
     t.string "order_id"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 20140628192939) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "editables", force: true do |t|
+    t.integer "page_id"
+    t.string  "name"
+    t.text    "text"
   end
 
   create_table "event_purchase_options", force: true do |t|
@@ -98,6 +104,10 @@ ActiveRecord::Schema.define(version: 20140628192939) do
     t.integer  "placement"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pages", force: true do |t|
+    t.string "name"
   end
 
   create_table "teams", force: true do |t|

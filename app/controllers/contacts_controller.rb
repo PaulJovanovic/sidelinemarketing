@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   def new
     @contact = Contact.new
+    @editables = Page.where(name: "Contact").last.editables
   end
 
   def create

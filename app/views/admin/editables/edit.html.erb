@@ -1,0 +1,13 @@
+<div class="dvm lhm">
+  <%= link_to "Pages", admin_pages_path, class: "c-red" %> &gt; <%= link_to @page.name, admin_page_path(@page), class: "c-red" %> &gt; <%= @editable.name %>
+</div>
+<div class="row nmhxxs">
+  <div class="col-sm-8 phxxs">
+    <%= form_for [:admin, @page, @editable] do |f| %>
+      <div class="">
+        <%= f.text_area :text, placeholder: "Text", class: "paxxxs bss bwas bc-12 full-width dvxxxxl" %>
+      </div>
+      <%= f.submit class: "btn btn-primary mts full-width" %>
+    <% end %>
+  </div>
+</div>

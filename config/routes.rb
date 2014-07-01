@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :galleries
     resources :photos
     resources :orders
+    resources :pages do
+      resources :editables
+    end
   end
   resources :events do
     resources :orders

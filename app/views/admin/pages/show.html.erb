@@ -1,0 +1,23 @@
+<div class="dvm lhm">
+  <%= link_to "Pages", admin_pages_path, class: "c-red" %> &gt; <%= @page.name %>
+</div>
+<div class="row nmhxxs">
+  <div class="col-sm-8 phxxs">
+    <% @page.editables.each_with_index do |editable, index| %>
+      <div class="pas<%= index % 2 == 0 ? " bg-10" : " bg-12" %>">
+        <table class="full-width">
+          <tr>
+            <td class="fwl">
+              <%= editable.name %>
+            </td>
+            <td class="text-right">
+              <%= link_to edit_admin_page_editable_path(@page, editable) do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

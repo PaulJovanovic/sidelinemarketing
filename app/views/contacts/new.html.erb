@@ -1,18 +1,18 @@
 <div class="row nmhs">
   <div class="col-sm-8 phs mtm">
     <div class="video-container">
-      <iframe src="https://www.google.com/maps/embed/v1/place?q=1112%20Front%20St%2C%20McHenry%2C%20IL%2C%20United%20States&key=AIzaSyAfmyic-kQ7VHXuaumum77G-FoudrJXJfE"></iframe>
+      <iframe src="https://www.google.com/maps/embed/v1/place?q=<%= @editables.where(name: "Location - Line 1").last.text %> <%= @editables.where(name: "Location - Line 2").last.text %> United States&key=AIzaSyAfmyic-kQ7VHXuaumum77G-FoudrJXJfE"></iframe>
     </div>
     <div class="row nmhxs">
       <div class="col-sm-4 phxs mtm">
-        <div class="c-1 fsxs fwl upcase">sideline marketing</div>
-        <div class="mtxxxs fsxxs">1112 N. Front St.</div>
-        <div class="mtxxxs fsxxs">McHenry IL, 60050</div>
+        <div class="c-1 fsxs fwl upcase"><%= @editables.where(name: "Location - Name").last.text %></div>
+        <div class="mtxxxs fsxxs"><%= @editables.where(name: "Location - Line 1").last.text %></div>
+        <div class="mtxxxs fsxxs"><%= @editables.where(name: "Location - Line 2").last.text %></div>
       </div>
       <div class="col-sm-5 phxs mtm">
-        <div class="c-1 fss fwl">847-651-8258</div>
+        <div class="c-1 fss fwl"><%= @editables.where(name: "Contact - Phone Number").last.text %></div>
         <div class="mtxxxs">
-          <%= mail_to "sidelinemktg@gmail.com", "sidelinemktg@gmail.com", class: "c-red" %>
+          <%= mail_to @editables.where(name: "Contact - Email Address").last.text, @editables.where(name: "Contact - Email Address").last.text, class: "c-red" %>
         </div>
       </div>
       <div class="col-sm-3 phxs mtm text-right">
@@ -22,7 +22,7 @@
               S
             </td>
             <td class="ptxxxs">
-              9:30am-7:30pm
+              <%= @editables.where(name: "Store Hours - Sunday").last.text %>
             </td>
           </tr>
           <tr>
@@ -30,7 +30,7 @@
               M
             </td>
             <td class="ptxxxs">
-              9:30am-7:30pm
+              <%= @editables.where(name: "Store Hours - Monday").last.text %>
             </td>
           </tr>
           <tr>
@@ -38,7 +38,7 @@
               T
             </td>
             <td class="ptxxxs">
-              9:30am-7:30pm
+              <%= @editables.where(name: "Store Hours - Tuesday").last.text %>
             </td>
           </tr>
           <tr>
@@ -46,7 +46,7 @@
               W
             </td>
             <td class="ptxxxs">
-              9:30am-4:00pm
+              <%= @editables.where(name: "Store Hours - Wednesday").last.text %>
             </td>
           </tr>
           <tr>
@@ -54,7 +54,7 @@
               T
             </td>
             <td class="ptxxxs">
-              9:30am-7:30pm
+              <%= @editables.where(name: "Store Hours - Thursday").last.text %>
             </td>
           </tr>
           <tr>
@@ -62,7 +62,7 @@
               F
             </td>
             <td class="ptxxxs">
-              9:30am-7:30pm
+              <%= @editables.where(name: "Store Hours - Friday").last.text %>
             </td>
           </tr>
           <tr>
@@ -70,7 +70,7 @@
               S
             </td>
             <td class="ptxxxs">
-              9:30am-7:30pm
+              <%= @editables.where(name: "Store Hours - Saturday").last.text %>
             </td>
           </tr>
         </table>
@@ -92,6 +92,7 @@
         </div>
       <% end %>
       <%= form_for @contact do |f| %>
+        <%= f.hidden_field :to, value: @editables.where(name: "Contact - Email Address").last.text %>
         <%= f.text_field :name, placeholder: "Name", class: "paxxxs mts bss bwas bc-1 full-width" %>
         <%= f.text_field :email, placeholder: "Email address", class: "paxxxs mts bss bwas bc-1 full-width" %>
         <%= f.text_field :subject, placeholder: "Subject", class: "paxxxs mts bss bwas bc-1 full-width" %>
