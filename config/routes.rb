@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   resources :athletes
   resources :galleries
-  get "/contact", to: "home#contact"
+  get "/contact", to: "contacts#new"
+  resource :contacts
   root to: "home#index"
 end

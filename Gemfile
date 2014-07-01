@@ -22,6 +22,9 @@ gem 'money-rails'
 
 gem "jquery-fileupload-rails"
 
+gem "bluepay"
+gem 'mail_form'
+
 group :development do
   gem 'mysql2'
 end

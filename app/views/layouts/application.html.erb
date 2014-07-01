@@ -9,6 +9,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=733767459997727&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
   <div class="dvxl lhxl bg-1">
     <nav class="navbar navbar-default zxl" role="navigation">
       <div class="container phm">
@@ -58,7 +66,7 @@
   <div class="container phm pvm text-center c-11 italicize">
     <div class="">&copy; 2014 SIDELINE MARKETING, LLC</div>
     <div class=""><%= link_to "ADMIN PANEL", admin_orders_path %></div>
-    <div class="mtxs">
+    <div class="mtxxxs">
       <%= link_to "http://cupofhunks.com" do %>
         <%= image_tag "cup.png" %>
       <% end %>

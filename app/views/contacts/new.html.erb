@@ -1,0 +1,107 @@
+<div class="row nmhs">
+  <div class="col-sm-8 phs mtm">
+    <div class="video-container">
+      <iframe src="https://www.google.com/maps/embed/v1/place?q=1112%20Front%20St%2C%20McHenry%2C%20IL%2C%20United%20States&key=AIzaSyAfmyic-kQ7VHXuaumum77G-FoudrJXJfE"></iframe>
+    </div>
+    <div class="row nmhxs">
+      <div class="col-sm-4 phxs mtm">
+        <div class="c-1 fsxs fwl upcase">sideline marketing</div>
+        <div class="mtxxxs fsxxs">1112 N. Front St.</div>
+        <div class="mtxxxs fsxxs">McHenry IL, 60050</div>
+      </div>
+      <div class="col-sm-5 phxs mtm">
+        <div class="c-1 fss fwl">847-651-8258</div>
+        <div class="mtxxxs">
+          <%= mail_to "sidelinemktg@gmail.com", "sidelinemktg@gmail.com", class: "c-red" %>
+        </div>
+      </div>
+      <div class="col-sm-3 phxs mtm text-right">
+        <table class="fsxxxs">
+          <tr>
+            <td class="prxxxs ptxxxs fwl text-left">
+              S
+            </td>
+            <td class="ptxxxs">
+              9:30am-7:30pm
+            </td>
+          </tr>
+          <tr>
+            <td class="prxxxs ptxxxs fwl text-left">
+              M
+            </td>
+            <td class="ptxxxs">
+              9:30am-7:30pm
+            </td>
+          </tr>
+          <tr>
+            <td class="prxxxs ptxxxs fwl text-left">
+              T
+            </td>
+            <td class="ptxxxs">
+              9:30am-7:30pm
+            </td>
+          </tr>
+          <tr>
+            <td class="prxxxs ptxxxs fwl text-left">
+              W
+            </td>
+            <td class="ptxxxs">
+              9:30am-4:00pm
+            </td>
+          </tr>
+          <tr>
+            <td class="prxxxs ptxxxs fwl text-left">
+              T
+            </td>
+            <td class="ptxxxs">
+              9:30am-7:30pm
+            </td>
+          </tr>
+          <tr>
+            <td class="prxxxs ptxxxs fwl text-left">
+              F
+            </td>
+            <td class="ptxxxs">
+              9:30am-7:30pm
+            </td>
+          </tr>
+          <tr>
+            <td class="prxxxs ptxxxs fwl text-left">
+              S
+            </td>
+            <td class="ptxxxs">
+              9:30am-7:30pm
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 phs mtm">
+    <div class="c-1 fsxs fwl italicize">
+      GENERAL INQUIRIES
+    </div>
+    <div class="">
+      <% if @contact.errors.any? %>
+        <div class="paxs mtxs bss bwas bc-1">
+          <% @contact.errors.full_messages.each do |message| %>
+            <div class="mtxxxs-plus c-red">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <%= form_for @contact do |f| %>
+        <%= f.text_field :name, placeholder: "Name", class: "paxxxs mts bss bwas bc-1 full-width" %>
+        <%= f.text_field :email, placeholder: "Email address", class: "paxxxs mts bss bwas bc-1 full-width" %>
+        <%= f.text_field :subject, placeholder: "Subject", class: "paxxxs mts bss bwas bc-1 full-width" %>
+        <%= f.text_area :message, placeholder: "Message", class: "paxxxs mts bss bwas bc-1 dvxxxxl full-width" %>
+        <div class="mtxs text-right">
+          <%= f.submit "SUBMIT", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="mvm bss bwtm bc-12"></div>
+    <div class="fb-like-box" data-href="https://www.facebook.com/sidelinemarketing" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+  </div>
+</div>

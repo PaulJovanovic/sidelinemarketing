@@ -32,6 +32,7 @@ GEM
       json (~> 1.4)
       nokogiri (< 1.6.0)
       uuidtools (~> 2.1)
+    bluepay (1.0.3)
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.2.2)
@@ -78,6 +79,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_form (1.5.0)
+      actionmailer (>= 3.2, < 5)
+      activemodel (>= 3.2, < 5)
     metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (1.25.1)
@@ -202,6 +206,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  bluepay
   bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
   factory_girl_rails
@@ -211,6 +216,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   jquery-ui-rails
+  mail_form
   mocha
   money
   money-rails
