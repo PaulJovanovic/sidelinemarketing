@@ -1,4 +1,6 @@
 class Admin::EditablesController < AdminController
+  before_action :admin_navigation
+
   def edit
     @page = Page.find(params[:page_id])
     @editable = Editable.find(params[:id])
@@ -19,5 +21,9 @@ class Admin::EditablesController < AdminController
 
   def editable_params
     params.require(:editable).permit(:text)
+  end
+
+  def admin_navigation
+    @navigation = "pages"
   end
 end
