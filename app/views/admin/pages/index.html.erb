@@ -4,7 +4,7 @@
 <div class="row nmhxxs">
   <div class="col-sm-8 phxxs">
     <% @pages.each_with_index do |page, index| %>
-      <div class="pas<%= index % 2 == 0 ? " bg-10" : " bg-12" %>">
+      <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
         <%= link_to page.name, admin_page_path(page), class: "fwl" %>
       </div>
     <% end %>

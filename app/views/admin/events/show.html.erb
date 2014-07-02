@@ -6,7 +6,7 @@
     <%= link_to "Add Option", new_admin_event_event_purchase_path(@event), class: "btn btn-primary" %>
     <div class="mtm">
       <% @event.purchases.each_with_index do |purchase, index| %>
-        <div class="pas<%= index % 2 == 0 ? " bg-10" : " bg-12" %>">
+        <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
           <table class="full-width">
             <tr>
               <td class="fwl">

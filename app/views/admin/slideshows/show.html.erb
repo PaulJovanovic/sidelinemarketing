@@ -6,7 +6,7 @@
     <%= link_to "Add Slide", new_admin_slideshow_slide_path(@slideshow), class: "btn btn-primary" %>
     <div class="mtm">
       <% @slideshow.slides.each_with_index do |slide, index| %>
-        <div class="pas<%= index % 2 == 0 ? " bg-10" : " bg-12" %>">
+        <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
           <table class="full-width">
             <tr>
               <td class="fwl">

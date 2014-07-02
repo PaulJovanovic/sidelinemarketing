@@ -6,7 +6,7 @@
     <%= link_to "Add Athlete", new_admin_organization_team_athlete_path(@organization, @team), class: "btn btn-primary" %>
     <div class="mtm">
       <% @athletes.each_with_index do |athlete, index| %>
-        <div class="pas<%= index % 2 == 0 ? " bg-10" : " bg-12" %>">
+        <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
           <table class="full-width">
             <tr>
               <td class="fwl">
