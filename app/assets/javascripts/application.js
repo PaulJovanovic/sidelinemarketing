@@ -38,4 +38,19 @@ $(document).ready(function() {
     container: $("#photo-scroller"),
     threshold: 200
   });
+
+  $(".js-slideshow").slidesjs({
+    navigation: {
+      active: false
+    },
+    pagination: {
+      active: false
+    },
+    play: {
+      active: false,
+      effect: "slide",
+      interval: 5000,
+      auto: true
+    }
+  });
 });

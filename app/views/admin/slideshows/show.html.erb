@@ -1,0 +1,26 @@
+<div class="dvm lhm">
+  <%= link_to "Slideshows", admin_slideshows_path, class: "c-red" %> &gt; <%= @slideshow.name %>
+</div>
+<div class="row nmhxxs">
+  <div class="col-sm-8 phxxs">
+    <%= link_to "Add Slide", new_admin_slideshow_slide_path(@slideshow), class: "btn btn-primary" %>
+    <div class="mtm">
+      <% @slideshow.slides.each_with_index do |slide, index| %>
+        <div class="pas<%= index % 2 == 0 ? " bg-10" : " bg-12" %>">
+          <table class="full-width">
+            <tr>
+              <td class="fwl">
+                <%= slide.name %>
+              </td>
+              <td class="text-right">
+                <%= link_to edit_admin_slideshow_slide_path(@slideshow, slide) do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

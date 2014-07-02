@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :pages do
       resources :editables
     end
+    resources :slideshows do
+      resources :slides
+    end
   end
   resources :events do
     resources :orders

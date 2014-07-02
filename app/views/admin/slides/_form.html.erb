@@ -1,0 +1,20 @@
+<%= form_for [:admin, @slideshow, @slide], html: {:multipart => true} do |f| %>
+  <%= f.hidden_field :assetable_type, value: "Slideshow" %>
+  <%= f.hidden_field :assetable_id, value: @slideshow.id %>
+  <div class="row nmhxxs mts-plus">
+    <% if @slide.attachment? %>
+      <div class="col-sm-6 phxxs">
+        <%= image_tag @slide.url(:original), class: "img-responsive" %>
+      </div>
+    <% end %>
+    <div class="col-sm-6 phxxs">
+      <%= f.file_field :attachment %>
+    </div>
+  </div>
+  <div class="mts-plus">
+    <%= f.text_field :name, placeholder: "Name", class: "paxxxs bss bwas bc-12 full-width" %>
+  </div>
+  <div class="mts-plus">
+    <%= f.submit class: "btn btn-primary full-width" %>
+  </div>
+<% end %>

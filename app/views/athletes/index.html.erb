@@ -16,9 +16,19 @@
   <% end %>
 <% end %>
 <div class="dvxs lhxs mtxs c-8 fsxxxs fwl italicize"></div>
-<div class="bg-8" style="height:500px">
-</div>
-<div class="mts c-8 fsxxxs italicize">
+<% if @slideshow && @slideshow.slides.any? %>
+  <div class="js-slideshow">
+    <% @slideshow.slides.each do |slide| %>
+      <div class="relative">
+        <%= image_tag slide.url(:medium), class: "img-responsive" %>
+        <div class="absolute bottom right phs pvxxxs mbl bg-1 c-16 fss italicize upcase">
+          <%= slide.name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<div class="nmtm c-8 fsxxxs italicize">
   ATHLETES WE HAVE WORKED WITH
 </div>
 <div class="row nmhxxs mts">
