@@ -6,6 +6,10 @@ class Event < ActiveRecord::Base
 
   validates :poster, :name, :date, :start_time, :end_time, :location_name, :location_street, :location_city, :location_state, :location_zip, presence: true
 
+  scope :active, -> { where(published: true, active: true) }
+  scope :inactive, -> { where(published: true, active: false) }
+  scope :pending, -> { where(published: false) }
+
   def description_as_html
     description.gsub("\n", "<br/>")
   end

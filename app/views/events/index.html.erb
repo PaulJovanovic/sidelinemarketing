@@ -2,16 +2,25 @@
   RED INDICATES A PRIVATE EVENT
 </div>
 <div class="row nmhl nmtl">
-  <% @events.each do |event| %>
-    <div class="col-sm-4 phl mtl">
-      <%= link_to event_path(event) do %>
-        <div class="relative">
-          <%= image_tag event.poster.url(:small), class: "img-responsive" %>
-          <div class="absolute right bottom mbl paxxxs bg-1 c-16 fsxxs italicize upcase<%= " bg-red" if event.private? %>">
-            <%= event.name %>
+  <% if @events.any? %>
+    <% @events.each do |event| %>
+      <div class="col-sm-4 phl mtl">
+        <%= link_to event_path(event) do %>
+          <div class="relative">
+            <%= image_tag event.poster.url(:small), class: "img-responsive" %>
+            <div class="absolute right bottom mbl paxxxs bg-1 c-16 fsxxs italicize upcase<%= " bg-red" if event.private? %>">
+              <%= event.name %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="fss fwl c-1 text-center mtxxxxl">
+      NO EVENTS SCHEDULED
+    </div>
+    <div class="fsxs c-1 text-center">
+      Come back soon!
     </div>
   <% end %>
 </div>

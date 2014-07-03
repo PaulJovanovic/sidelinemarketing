@@ -5,42 +5,68 @@
   <div class="mts-plus">
     <%= f.text_field :description, placeholder: "Description", class: "paxxxs bss bwas bc-12 full-width" %>
   </div>
-  <div class="row nmhxxs mts-plus">
-    <div class="col-sm-6 phxxs">
-      <table id="purchase-options" class="full-width">
-        <tr>
-          <th>Quantity</th>
-          <th>Price</th>
+  <% if @event.published? %>
+    <div class="mts-plus">
+      <table>
+        <tr class="paxs">
+          <th>
+            Quantity
+          </th>
+          <th class="paxs text-right">
+            Price
+          </th>
         </tr>
-        <%= f.fields_for :options do |option_fields| %>
-          <tr class="js-purchase-option"<%= " data-url=#{admin_event_purchase_option_url(option_fields.object)}" if option_fields.object.persisted? %>>
-            <td class="prs ptxxxs">
-              <%= option_fields.object.quantity %>
-              <%= option_fields.hidden_field :quantity %>
+        <% @purchase.options.each_with_index do |option, index| %>
+          <% color = index % 2 == 0 ? "bg-13" : "bg-12" %>
+          <tr class="<%= color %>">
+            <td class="paxs">
+              <%= option.quantity %>
             </td>
-            <td class="ptxxxs">
-              <table class="full-width">
-                <tr>
-                  <td class="prxxxs">
-                    $
-                  </td>
-                  <td>
-                    <%= option_fields.text_field :price, placeholder: "Price", class: "paxxxs bss bwas bc-12 full-width" %>
-                  </td>
-                </tr>
-              </table>
-            </td>
-            <td class="ptxxxs pls pointer fade-xl fade-n-active js-purchase-option-delete">
-              <i class="fa fa-times"></i>
+            <td class="paxs text-right">
+              <%= number_to_currency option.price %>
             </td>
           </tr>
         <% end %>
       </table>
     </div>
-  </div>
-  <div class="mtxs">
-    <span id="add-purchase-option" class="c-red pointer"><i class="fa fa-plus"></i> Quantity</span>
-  </div>
+  <% else %>
+    <div class="row nmhxxs mts-plus">
+      <div class="col-sm-6 phxxs">
+        <table id="purchase-options" class="full-width">
+          <tr>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+          <%= f.fields_for :options do |option_fields| %>
+            <tr class="js-purchase-option"<%= " data-url=#{admin_event_purchase_option_url(option_fields.object)}" if option_fields.object.persisted? %>>
+              <td class="prs ptxxxs">
+                <%= option_fields.object.quantity %>
+                <%= option_fields.hidden_field :quantity %>
+              </td>
+              <td class="ptxxxs">
+                <table class="full-width">
+                  <tr>
+                    <td class="prxxxs">
+                      $
+                    </td>
+                    <td>
+                      <%= option_fields.text_field :price, placeholder: "Price", class: "paxxxs bss bwas bc-12 full-width" %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="ptxxxs pls pointer fade-xl fade-n-active js-purchase-option-delete">
+                <i class="fa fa-times"></i>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="mtxs">
+      <span id="add-purchase-option" class="c-red pointer"><i class="fa fa-plus"></i> Quantity</span>
+    </div>
+  <% end %>
   <div class="mts">
     <%= f.submit "Save Purchase Option", class: "btn btn-primary full-width" %>
   </div>

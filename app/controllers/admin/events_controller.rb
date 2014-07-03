@@ -2,7 +2,9 @@ class Admin::EventsController < AdminController
   before_action :admin_navigation
 
   def index
-    @events = Event.all
+    @pending = Event.pending.order(:placement)
+    @active = Event.active.order(:placement)
+    @inactive = Event.inactive.order(:placement)
   end
 
   def show
@@ -50,7 +52,7 @@ class Admin::EventsController < AdminController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :start_time, :end_time, :description, :private, :location_name, :location_street, :location_city, :location_state, :location_zip, poster_attributes: [:id, :attachment])
+    params.require(:event).permit(:name, :date, :start_time, :end_time, :description, :private, :location_name, :location_street, :location_city, :location_state, :location_zip, :published, :active, poster_attributes: [:id, :attachment])
   end
 
   def admin_navigation

@@ -1,11 +1,42 @@
 <% if @event.errors.any? %>
-  <div class="pas mbs bg-16 bss bwas bc-12">
+  <div class="pas mts-plus bg-16 bss bwas bc-12">
     <% @event.errors.full_messages.each do |message| %>
       <div class="mtxxxs c-red"><%= message %></div>
     <% end %>
   </div>
 <% end %>
-<%= form_for [:admin, @event], html: {:multipart => true} do |f| %>
+<% if @event.persisted? %>
+  <% if @event.purchases.any? %>
+    <% if @event.published == false %>
+      <div class="mts-plus">
+        <%= form_for [:admin, @event] do |f| %>
+          <%= f.hidden_field :published, value: true %>
+          <%= f.hidden_field :active, value: true %>
+          <%= f.submit "Publish", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% elsif @event.active? %>
+      <div class="mts-plus">
+        <%= form_for [:admin, @event] do |f| %>
+          <%= f.hidden_field :active, value: false %>
+          <%= f.submit "Deactivate", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="mts-plus">
+        <%= form_for [:admin, @event] do |f| %>
+          <%= f.hidden_field :active, value: true %>
+          <%= f.submit "Activate", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="mts-plus">
+      <%= link_to "You must attach options to the event before you can publish it. Click here.", admin_event_path(@event), class: "c-red" %>
+    </div>
+  <% end %>
+<% end %>
+<%= form_for [:admin, @event], html: {:multipart => true, class: "mts-plus"} do |f| %>
   <div class="row nmhxxs mts-plus">
     <% if @event.poster.attachment? %>
       <div class="col-sm-6 phxxs">

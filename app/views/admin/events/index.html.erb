@@ -4,31 +4,92 @@
 <div class="row nmhxxs">
   <div class="col-sm-8 phxxs">
     <%= link_to "Add Event", new_admin_event_path, class: "btn btn-primary" %>
-    <div class="mtm">
-      <table class="full-width">
-        <tbody class="js-sortable" data-url=<%= placements_admin_events_url %>>
-          <% @events.each_with_index do |event, index| %>
-            <tr id="<%= "sortable-#{event.id}" %>" class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
-              <td class="phxxxs pvxs">
-                <i class="fa fa-arrows"></i>
-              </td>
-              <td class="phxxxs pvxs fwl full-width">
-                <%= event.name %>
-              </td>
-              <td class="phxxxs pvxs">
-                <%= link_to admin_event_path(event), class: "btn btn-primary" do %>
-                  <i class="fa fa-bars"></i> <span class="hidden-xs">Options</span>
-                <% end %>
-              </td>
-              <td class="phxxxs pvxs">
-                <%= link_to edit_admin_event_path(event), class: "btn btn-primary" do %>
-                  <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+    <% if @pending.any? %>
+      <div class="mts c-1 fss fwl italicize">PENDING EVENTS</div>
+      <div class="mts">
+        <table class="full-width">
+          <tbody class="js-sortable" data-url=<%= placements_admin_events_url %>>
+            <% @pending.each_with_index do |event, index| %>
+              <tr id="<%= "sortable-#{event.id}" %>" class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+                <td class="phxxxs pvxs">
+                  <i class="fa fa-arrows"></i>
+                </td>
+                <td class="phxxxs pvxs fwl full-width">
+                  <%= event.name %>
+                </td>
+                <td class="phxxxs pvxs">
+                  <%= link_to admin_event_path(event), class: "btn btn-primary" do %>
+                    <i class="fa fa-bars"></i> <span class="hidden-xs">Options</span>
+                  <% end %>
+                </td>
+                <td class="phxxxs pvxs">
+                  <%= link_to edit_admin_event_path(event), class: "btn btn-primary" do %>
+                    <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+    <% if @active.any? %>
+      <div class="mts c-1 fss fwl italicize">ACTIVE EVENTS</div>
+      <div class="mts">
+        <table class="full-width">
+          <tbody class="js-sortable" data-url=<%= placements_admin_events_url %>>
+            <% @active.each_with_index do |event, index| %>
+              <tr id="<%= "sortable-#{event.id}" %>" class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+                <td class="phxxxs pvxs">
+                  <i class="fa fa-arrows"></i>
+                </td>
+                <td class="phxxxs pvxs fwl full-width">
+                  <%= event.name %>
+                </td>
+                <td class="phxxxs pvxs">
+                  <%= link_to admin_event_path(event), class: "btn btn-primary" do %>
+                    <i class="fa fa-bars"></i> <span class="hidden-xs">Options</span>
+                  <% end %>
+                </td>
+                <td class="phxxxs pvxs">
+                  <%= link_to edit_admin_event_path(event), class: "btn btn-primary" do %>
+                    <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+    <% if @inactive.any? %>
+      <div class="mts c-1 fss fwl italicize">INACTIVE EVENTS</div>
+      <div class="mts">
+        <table class="full-width">
+          <tbody class="js-sortable" data-url=<%= placements_admin_events_url %>>
+            <% @inactive.each_with_index do |event, index| %>
+              <tr id="<%= "sortable-#{event.id}" %>" class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+                <td class="phxxxs pvxs">
+                  <i class="fa fa-arrows"></i>
+                </td>
+                <td class="phxxxs pvxs fwl full-width">
+                  <%= event.name %>
+                </td>
+                <td class="phxxxs pvxs">
+                  <%= link_to admin_event_path(event), class: "btn btn-primary" do %>
+                    <i class="fa fa-bars"></i> <span class="hidden-xs">Options</span>
+                  <% end %>
+                </td>
+                <td class="phxxxs pvxs">
+                  <%= link_to edit_admin_event_path(event), class: "btn btn-primary" do %>
+                    <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
   </div>
 </div>
