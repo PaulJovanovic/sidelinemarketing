@@ -35,7 +35,7 @@
     </div>
     <div class="mtl bss bwtm bc-12"></div>
     <%= form_for :order, url: new_event_order_path(@event), method: :get do |f| %>
-      <% @event.purchases.each do |purchase| %>
+      <% @event.purchases.order(:placement).each do |purchase| %>
         <div class="mtl">
           <div class="mtxxxs-plus fsxs fwl italicize upcase">
             <%= purchase.name %>

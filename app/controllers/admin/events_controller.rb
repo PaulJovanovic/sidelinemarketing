@@ -7,6 +7,7 @@ class Admin::EventsController < AdminController
 
   def show
     @event = Event.find(params[:id])
+    @purchases = @event.purchases.order(:placement)
   end
 
   def new

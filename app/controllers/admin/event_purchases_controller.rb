@@ -35,6 +35,14 @@ class Admin::EventPurchasesController < AdminController
     end
   end
 
+  def placements
+    params[:sortable].each_with_index do |id, index|
+      EventPurchase.find(id).update_column(:placement, index + 1)
+    end
+
+    render json: true
+  end
+
   private
 
   def event_purchase_params

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703192849) do
+ActiveRecord::Schema.define(version: 20140703211604) do
 
   create_table "addresses", force: true do |t|
     t.string "order_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140703192849) do
     t.integer "event_id"
     t.string  "name"
     t.string  "description"
+    t.integer "placement"
   end
 
   create_table "events", force: true do |t|

@@ -6,21 +6,23 @@
     <%= link_to "Add Option", new_admin_event_event_purchase_path(@event), class: "btn btn-primary" %>
     <div class="mtm">
       <table class="full-width">
-        <% @event.purchases.each_with_index do |purchase, index| %>
-          <tr class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
-            <td class="phxxxs pvxs">
-              <i class="fa fa-arrows"></i>
-            </td>
-            <td class="phxxxs pvxs fwl full-width">
-              <%= purchase.name %>
-            </td>
-            <td class="phxxxs pvxs">
-              <%= link_to edit_admin_event_event_purchase_path(@event, purchase), class: "btn btn-primary" do %>
-                <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+        <tbody class="js-sortable" data-url=<%= placements_admin_event_event_purchases_url(@event) %>>
+          <% @purchases.each_with_index do |purchase, index| %>
+            <tr id="<%= "sortable-#{purchase.id}" %>" class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+              <td class="phxxxs pvxs">
+                <i class="fa fa-arrows"></i>
+              </td>
+              <td class="phxxxs pvxs fwl full-width">
+                <%= purchase.name %>
+              </td>
+              <td class="phxxxs pvxs">
+                <%= link_to edit_admin_event_event_purchase_path(@event, purchase), class: "btn btn-primary" do %>
+                  <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
