@@ -1,6 +1,7 @@
 <%= form_for [:admin, @organization, @team] do |f| %>
   <div class="">
     <%= f.text_field :name, placeholder: "Name", class: "paxxxs bss bwas bc-12 full-width" %>
+    <div class="c-8 fsxxxs">Leave blank if you don't want it to display</div>
   </div>
   <div class="mts">
     <%= f.submit class: "btn btn-primary full-width" %>
