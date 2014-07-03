@@ -3,10 +3,19 @@
 </div>
 <div class="row nmhxxs">
   <div class="col-sm-8 phxxs">
-    <% @pages.each_with_index do |page, index| %>
-      <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
-        <%= link_to page.name, admin_page_path(page), class: "fwl" %>
-      </div>
-    <% end %>
+    <table class="full-width">
+      <% @pages.each_with_index do |page, index| %>
+        <tr class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+          <td class="phxxxs pvxs fwl full-width">
+            <%= page.name %>
+          </td>
+          <td class="phxxxs pvxs">
+            <%= link_to admin_page_path(page), class: "btn btn-primary" do %>
+              <i class="fa fa-bars"></i> <span class="hidden-xs">Editables</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>

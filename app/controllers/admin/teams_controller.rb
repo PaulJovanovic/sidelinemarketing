@@ -44,6 +44,14 @@ class Admin::TeamsController < AdminController
 
   end
 
+  def placements
+    params[:sortable].each_with_index do |id, index|
+      Team.find(id).update_column(:placement, index + 1)
+    end
+
+    render json: true
+  end
+
   private
 
   def team_params

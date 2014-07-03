@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.ui.datepicker
+//= require jquery.ui.sortable
 //= require jquery_ujs
 //= require jquery-fileupload/basic
 //= require jquery.validate.min
@@ -53,4 +54,17 @@ $(document).ready(function() {
       auto: true
     }
   });
+
+  $(".js-sortable").sortable({
+    update: function (event, ui) {
+      var data = $(this).sortable('serialize');
+      var url = $(this).data("url");
+      $.ajax({
+        data: data,
+        type: 'POST',
+        url: url
+      });
+    }
+  });
+  $(".js-sortable").disableSelection();
 });

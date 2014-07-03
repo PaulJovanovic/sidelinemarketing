@@ -3,10 +3,19 @@
 </div>
 <div class="row nmhxxs">
   <div class="col-sm-8 phxxs">
-    <% @slideshows.each_with_index do |slideshow, index| %>
-      <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
-        <%= link_to slideshow.name, admin_slideshow_path(slideshow), class: "fwl" %>
-      </div>
-    <% end %>
+    <table class="full-width">
+      <% @slideshows.each_with_index do |slideshow, index| %>
+        <tr class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+          <td class="phxxxs pvxs fwl full-width">
+            <%= slideshow.name %>
+          </td>
+          <td class="phxxxs pvxs">
+            <%= link_to admin_slideshow_path(slideshow), class: "btn btn-primary" do %>
+              <i class="fa fa-bars"></i> <span class="hidden-xs">Slides</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>

@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
   def index
-    @galleries = Gallery.order("created_at desc")
+    @galleries = Gallery.order(:placement)
   end
 
   def show

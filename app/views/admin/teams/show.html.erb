@@ -5,22 +5,20 @@
   <div class="col-sm-8 phxxs">
     <%= link_to "Add Athlete", new_admin_organization_team_athlete_path(@organization, @team), class: "btn btn-primary" %>
     <div class="mtm">
-      <% @athletes.each_with_index do |athlete, index| %>
-        <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
-          <table class="full-width">
-            <tr>
-              <td class="fwl">
-                <%= athlete.name %>
-              </td>
-              <td class="text-right">
-                <%= link_to edit_admin_organization_team_athlete_path(@organization, @team, athlete) do %>
-                  <i class="fa fa-edit"></i>
-                <% end %>
-              </td>
-            </tr>
-          </table>
-        </div>
-      <% end %>
+      <table class="full-width">
+        <% @athletes.each_with_index do |athlete, index| %>
+          <tr class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+            <td class="phxxxs pvxs fwl full-width">
+              <%= athlete.name %>
+            </td>
+            <td class="phxxxs pvxs">
+              <%= link_to edit_admin_organization_team_athlete_path(@organization, @team, athlete), class: "btn btn-primary" do %>
+                <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>

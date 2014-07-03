@@ -1,22 +1,43 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :events do
-      resources :event_purchases
+      collection do
+        post :placements
+      end
+      resources :event_purchases do
+        collection do
+          post :placements
+        end
+      end
     end
     resources :event_purchase_options
     resources :organizations do
+      collection do
+        post :placements
+      end
       resources :teams do
+        collection do
+          post :placements
+        end
         resources :athletes
       end
     end
-    resources :galleries
+    resources :galleries do
+      collection do
+        post :placements
+      end
+    end
     resources :photos
     resources :orders
     resources :pages do
       resources :editables
     end
     resources :slideshows do
-      resources :slides
+      resources :slides do
+        collection do
+          post :placements
+        end
+      end
     end
   end
   resources :events do

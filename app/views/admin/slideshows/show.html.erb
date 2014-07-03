@@ -5,22 +5,23 @@
   <div class="col-sm-8 phxxs">
     <%= link_to "Add Slide", new_admin_slideshow_slide_path(@slideshow), class: "btn btn-primary" %>
     <div class="mtm">
-      <% @slideshow.slides.each_with_index do |slide, index| %>
-        <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
-          <table class="full-width">
-            <tr>
-              <td class="fwl">
-                <%= slide.name %>
-              </td>
-              <td class="text-right">
-                <%= link_to edit_admin_slideshow_slide_path(@slideshow, slide) do %>
-                  <i class="fa fa-edit"></i>
-                <% end %>
-              </td>
-            </tr>
-          </table>
-        </div>
-      <% end %>
+      <table class="full-width">
+        <% @slideshow.slides.each_with_index do |slide, index| %>
+          <tr class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+            <td class="phxxxs pvxs">
+              <i class="fa fa-arrows"></i>
+            </td>
+            <td class="phxxxs pvxs fwl full-width">
+              <%= slide.name %>
+            </td>
+            <td class="phxxxs pvxs">
+              <%= link_to edit_admin_slideshow_slide_path(@slideshow, slide), class: "btn btn-primary" do %>
+                <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>

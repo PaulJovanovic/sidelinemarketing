@@ -38,7 +38,12 @@ class Admin::EventsController < AdminController
     end
   end
 
-  def destroy
+  def placements
+    params[:sortable].each_with_index do |id, index|
+      Event.find(id).update_column(:placement, index + 1)
+    end
+
+    render json: true
   end
 
   private

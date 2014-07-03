@@ -5,22 +5,30 @@
   <div class="col-sm-8 phxxs">
     <%= link_to "Add Team", new_admin_organization_team_path(@organization), class: "btn btn-primary" %>
     <div class="mtm">
-      <% @teams.each_with_index do |team, index| %>
-        <div class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
-          <table class="full-width">
-            <tr>
-              <td class="fwl">
-                <%= link_to team.name, admin_organization_team_path(@organization, team) %>
+      <table class="full-width">
+        <tbody class="js-sortable" data-url=<%= placements_admin_organization_teams_url(@organization) %>>
+          <% @teams.each_with_index do |team, index| %>
+            <tr id="<%= "sortable-#{team.id}" %>" class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+              <td class="phxxxs pvxs">
+                <i class="fa fa-arrows"></i>
               </td>
-              <td class="text-right">
-                <%= link_to edit_admin_organization_team_path(@organization, team) do %>
-                  <i class="fa fa-edit"></i>
+              <td class="phxxxs pvxs fwl full-width">
+                <%= team.name %>
+              </td>
+              <td class="phxxxs pvxs">
+                <%= link_to admin_organization_team_path(@organization, team), class: "btn btn-primary" do %>
+                  <i class="fa fa-bars"></i> <span class="hidden-xs">Athletes</span>
+                <% end %>
+              </td>
+              <td class="phxxxs pvxs">
+                <%= link_to edit_admin_organization_team_path(@organization, team), class: "btn btn-primary" do %>
+                  <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
                 <% end %>
               </td>
             </tr>
-          </table>
-        </div>
-      <% end %>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

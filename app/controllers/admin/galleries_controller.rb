@@ -24,6 +24,14 @@ class Admin::GalleriesController < AdminController
     end
   end
 
+  def placements
+    params[:sortable].each_with_index do |id, index|
+      Gallery.find(id).update_column(:placement, index + 1)
+    end
+
+    render json: true
+  end
+
   private
 
   def gallery_params

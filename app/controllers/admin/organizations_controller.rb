@@ -2,7 +2,7 @@ class Admin::OrganizationsController < AdminController
   before_action :admin_navigation
 
   def index
-    @organizations = Organization.all
+    @organizations = Organization.order(:placement)
   end
 
   def show
@@ -36,6 +36,14 @@ class Admin::OrganizationsController < AdminController
     else
       render :edit
     end
+  end
+
+  def placements
+    params[:sortable].each_with_index do |id, index|
+      Organization.find(id).update_column(:placement, index + 1)
+    end
+
+    render json: true
   end
 
   private
