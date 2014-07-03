@@ -2,7 +2,9 @@
 <% @organizations.each do |organization| %>
   <% array << "<div class='c-red fwl fsxs italicize'>#{organization.name}</div>" %>
   <% organization.teams.order(:placement).each do |team| %>
-    <% array << "<div class='c-1 fsxxs fwl'>#{team.name}</div>" %>
+    <% if team.name.present? %>
+      <% array << "<div class='c-1 fsxxs fwl'>#{team.name}</div>" %>
+    <% end %>
     <% team.athletes.order(:name).each do |athlete| %>
       <% array << "<div class='c-1 fsxxs'>#{athlete.name}</div>" %>
     <% end %>
