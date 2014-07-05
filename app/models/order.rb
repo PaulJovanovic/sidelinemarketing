@@ -26,8 +26,8 @@ class Order < ActiveRecord::Base
   private
 
   def purchase
-    mode = Rails.env.development? ? "TEST" : "LIVE"
-    payment = BluePay.new(ENV["MERCHANT_ACCOUNT_ID"], ENV["MERCHANT_ACCOUNT_SECRET"], mode)
+    # mode = Rails.env.development? ? "TEST" : "LIVE"
+    payment = BluePay.new(ENV["MERCHANT_ACCOUNT_ID"], ENV["MERCHANT_ACCOUNT_SECRET"], "TEST")
 
     payment.set_cc_information(credit_card_number.tr(" ", ""), "#{credit_card_expiration_month}#{credit_card_expiration_year[2,2]}", credit_card_security_code)
 
@@ -58,6 +58,7 @@ class Order < ActiveRecord::Base
       puts "AUTH CODE: " + payment.get_auth_code()
     else
       errors.add(:credit_card, payment.get_message())
+      false
     end
   end
 end
