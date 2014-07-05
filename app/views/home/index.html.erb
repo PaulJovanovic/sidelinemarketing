@@ -1,6 +1,14 @@
 <div class="bg-1">
-  <div class="container phxs bg-repeat-n" style="background-position: bottom right;background-image: url(<%= asset_path("AlshonJeffrey.jpg") %>);background-size: auto 100%;padding-bottom: 120px;">
-    <div class="row nmhs">
+  <div class="container phxs relative zxs bg-repeat-n js-slide-background" style="background-position: bottom right;background-size: auto 100%;padding-bottom: 120px;">
+    <div class="hide">
+      <% if @slideshow %>
+        <% @slideshow.slides.each do |slide| %>
+          <%= image_tag slide.url(:original), class: "js-slide-background-image" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="absolute fill bg-1 fade-xs zs js-slide-background-fade"></div>
+    <div class="row nmhs relative zm">
       <div class="col-md-6 phs mts">
         <%= image_tag "logo.png" %>
       </div>
@@ -14,17 +22,19 @@
       </div>
     </div>
     <div class="dvs hidden-xs"></div>
-    <div class="row nmhs mtxs">
-      <div class="col-sm-7 phs c-16 fws fss lhs" style="text-shadow: 1px 1px #000000">
-        <%= @editables.where(name: "Description").last.text %>
+    <div class="relative zm">
+      <div class="row nmhs mtxs">
+        <div class="col-sm-7 phs c-16 fws fss lhs" style="text-shadow: 1px 1px #000000">
+          <%= @editables.where(name: "Description").last.text %>
+        </div>
       </div>
-    </div>
-    <div class="c-red fsxl fwl italicize mtxxl">
-      OUR MISSION
-    </div>
-    <div class="row nmhs">
-      <div class="col-sm-7 phs mtxxs c-16 fsxxs lhs" style="text-shadow: 1px 1px #000000">
-        <%= @editables.where(name: "Paragraph - Left").last.text %>
+      <div class="c-red fsxl fwl italicize mtxxl">
+        OUR MISSION
+      </div>
+      <div class="row nmhs">
+        <div class="col-sm-7 phs mtxxs c-16 fsxxs lhs" style="text-shadow: 1px 1px #000000">
+          <%= @editables.where(name: "Paragraph - Left").last.text %>
+        </div>
       </div>
     </div>
   </div>
