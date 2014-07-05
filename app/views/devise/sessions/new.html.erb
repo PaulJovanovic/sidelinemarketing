@@ -13,7 +13,7 @@
           <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "paxxxs bss bwas bc-12 full-width" %>
         </div>
         <div class="mts-plus">
-          <%= f.submit "Sign in", class: "btn btn-primary full-width" %>
+          <%= f.submit "Sign in", class: "btn btn-primary full-width", data: { disable_with: "submitting" } %>
         </div>
         <% if devise_mapping.rememberable? -%>
           <div class="mtxxxs">

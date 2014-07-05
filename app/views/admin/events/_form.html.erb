@@ -12,21 +12,21 @@
         <%= form_for [:admin, @event] do |f| %>
           <%= f.hidden_field :published, value: true %>
           <%= f.hidden_field :active, value: true %>
-          <%= f.submit "Publish", class: "btn btn-primary" %>
+          <%= f.submit "Publish", class: "btn btn-primary", data: { disable_with: "publishing" } %>
         <% end %>
       </div>
     <% elsif @event.active? %>
       <div class="mts-plus">
         <%= form_for [:admin, @event] do |f| %>
           <%= f.hidden_field :active, value: false %>
-          <%= f.submit "Deactivate", class: "btn btn-primary" %>
+          <%= f.submit "Deactivate", class: "btn btn-primary", data: { disable_with: "deactivating" } %>
         <% end %>
       </div>
     <% else %>
       <div class="mts-plus">
         <%= form_for [:admin, @event] do |f| %>
           <%= f.hidden_field :active, value: true %>
-          <%= f.submit "Activate", class: "btn btn-primary" %>
+          <%= f.submit "Activate", class: "btn btn-primary", data: { disable_with: "activating" } %>
         <% end %>
       </div>
     <% end %>
@@ -90,6 +90,6 @@
     </div>
   </div>
   <div class="mts-plus">
-    <%= f.submit class: "btn btn-primary full-width" %>
+    <%= f.submit class: "btn btn-primary full-width", data: { disable_with: "submitting" } %>
   </div>
 <% end %>

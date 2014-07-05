@@ -3,6 +3,6 @@
     <%= f.text_field :name, placeholder: "Name", class: "paxxxs bss bwas bc-12 full-width" %>
   </div>
   <div class="mts">
-    <%= f.submit class: "btn btn-primary full-width" %>
+    <%= f.submit class: "btn btn-primary full-width", data: { disable_with: "submitting" } %>
   </div>
 <% end %>

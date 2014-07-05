@@ -17,7 +17,7 @@
           <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", autocomplete: "off", class: "paxxxs bss bwas bc-12 full-width" %>
         </div>
         <div class="mts-plus">
-          <%= f.submit "Sign up", class: "btn btn-primary full-width" %>
+          <%= f.submit "Sign up", class: "btn btn-primary full-width", data: { disable_with: "submitting" } %>
         </div>
       <% end %>
     </div>

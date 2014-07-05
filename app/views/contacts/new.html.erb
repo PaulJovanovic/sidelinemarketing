@@ -98,7 +98,7 @@
         <%= f.text_field :subject, placeholder: "Subject", class: "paxxxs mts bss bwas bc-1 full-width" %>
         <%= f.text_area :message, placeholder: "Message", class: "paxxxs mts bss bwas bc-1 dvxxxxl full-width" %>
         <div class="mtxs text-right">
-          <%= f.submit "SUBMIT", class: "btn btn-primary" %>
+          <%= f.submit "SUBMIT", class: "btn btn-primary", data: { disable_with: "submitting" } %>
         </div>
       <% end %>
     </div>
