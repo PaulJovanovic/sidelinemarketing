@@ -45,8 +45,6 @@ class Order < ActiveRecord::Base
     payment.set_email(email)
     payment.sale(price.to_s)
 
-    binding.pry
-
     response = payment.process()
 
     if (payment.get_status() == "APPROVED") then
