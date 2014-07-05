@@ -16,10 +16,13 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      redirect_to root_path
+      redirect_to confirmation_event_orders_path
     else
       render :new
     end
+  end
+
+  def confirmation
   end
 
   private

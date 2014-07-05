@@ -41,7 +41,11 @@ Rails.application.routes.draw do
     end
   end
   resources :events do
-    resources :orders
+    resources :orders do
+      collection do
+        get :confirmation
+      end
+    end
   end
   resources :athletes
   resources :galleries
