@@ -24,6 +24,7 @@ gem "jquery-fileupload-rails"
 
 gem "bluepay"
 gem 'mail_form'
+gem 'devise'
 
 group :development do
   gem 'mysql2'

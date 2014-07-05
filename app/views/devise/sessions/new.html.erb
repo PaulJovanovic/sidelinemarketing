@@ -1,0 +1,29 @@
+<div class="row nmhxs mtl">
+  <div class="col-sm-6 col-sm-offset-3 phxs">
+    <div class="c-1 fsm fwl italicize">
+      ADMIN PANEL
+    </div>
+    <div class="mtxs c-8">You must know the password to enter the locker room.</div>
+    <div class="mtxs">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="mts-plus">
+          <%= f.email_field :email, placeholder: "Email", autofocus: true, class: "paxxxs bss bwas bc-12 full-width" %>
+        </div>
+        <div class="mts-plus">
+          <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "paxxxs bss bwas bc-12 full-width" %>
+        </div>
+        <div class="mts-plus">
+          <%= f.submit "Sign in", class: "btn btn-primary full-width" %>
+        </div>
+        <% if devise_mapping.rememberable? -%>
+          <div class="mtxxxs">
+            <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+      <% end %>
+    </div>
+    <div class="mtl">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

@@ -32,6 +32,7 @@ GEM
       json (~> 1.4)
       nokogiri (< 1.6.0)
       uuidtools (~> 2.1)
+    bcrypt (3.1.7)
     bluepay (1.0.3)
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
@@ -48,6 +49,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.0)
@@ -101,6 +108,7 @@ GEM
     mysql2 (0.3.16)
     newrelic_rpm (3.8.1.221)
     nokogiri (1.5.10)
+    orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -199,6 +207,8 @@ GEM
       raindrops (~> 0.7)
     uuidtools (2.1.4)
     vcr (2.9.2)
+    warden (1.2.3)
+      rack (>= 1.0)
     will_paginate (3.0.5)
 
 PLATFORMS
@@ -209,6 +219,7 @@ DEPENDENCIES
   bluepay
   bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
+  devise
   factory_girl_rails
   font-awesome-rails
   friendly_id

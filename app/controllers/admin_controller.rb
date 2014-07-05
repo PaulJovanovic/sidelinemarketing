@@ -3,5 +3,14 @@ class AdminController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   layout "admin"
   protect_from_forgery with: :exception
-  # before_filter :authenticate_admin!
+  before_action :authenticate_user!
+  before_action :authenticate_admin!
+
+  private
+
+  def authenticate_admin!
+    if !current_user.admin?
+      render template: "admin/home/pending", layout: "application"
+    end
+  end
 end
