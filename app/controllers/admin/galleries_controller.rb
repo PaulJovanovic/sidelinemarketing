@@ -24,6 +24,20 @@ class Admin::GalleriesController < AdminController
     end
   end
 
+  def edit
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def update
+    @gallery = Gallery.find(params[:id])
+
+    if @gallery.update_attributes(gallery_params)
+      redirect_to admin_galleries_path
+    else
+      render :edit
+    end
+  end
+
   def placements
     params[:sortable].each_with_index do |id, index|
       Gallery.find(id).update_column(:placement, index + 1)
