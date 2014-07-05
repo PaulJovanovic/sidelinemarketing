@@ -1,5 +1,5 @@
 <div class="bg-1">
-  <div class="container phxs pbxxl bg-repeat-n" style="background-position: bottom right;background-image: url(<%= asset_path("AlshonJeffrey.jpg") %>);background-size: auto 100%;">
+  <div class="container phxs bg-repeat-n" style="background-position: bottom right;background-image: url(<%= asset_path("AlshonJeffrey.jpg") %>);background-size: auto 100%;padding-bottom: 120px;">
     <div class="row nmhs">
       <div class="col-md-6 phs mts">
         <%= image_tag "logo.png" %>
@@ -19,19 +19,13 @@
         <%= @editables.where(name: "Description").last.text %>
       </div>
     </div>
-  </div>
-</div>
-<div class="dvxxxs bg-8"></div>
-<div class="container phxs pbxxxxl mtxl">
-  <div class="c-red fsxl fwl italicize">
-    OUR MISSION
-  </div>
-  <div class="row nmhs">
-    <div class="col-sm-7 phs mtxxs fsxxs lhs">
-      <%= @editables.where(name: "Paragraph - Left").last.text %>
+    <div class="c-red fsxl fwl italicize mtxxl">
+      OUR MISSION
     </div>
-    <div class="col-sm-5 phs mtxxs fsxxs lhs">
-      <%= @editables.where(name: "Paragraph - Right").last.text %>
+    <div class="row nmhs">
+      <div class="col-sm-7 phs mtxxs c-16 fsxxs lhs" style="text-shadow: 1px 1px #000000">
+        <%= @editables.where(name: "Paragraph - Left").last.text %>
+      </div>
     </div>
   </div>
 </div>
