@@ -4,7 +4,7 @@
 <div class="row nmhxxs">
   <div class="col-sm-8 phxxs">
     <table class="full-width">
-      <% @page.editables.each_with_index do |editable, index| %>
+      <% @page.editables.order(:id).each_with_index do |editable, index| %>
         <tr class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
           <td class="phxxxs pvxs fwl full-width">
             <%= editable.name %>
