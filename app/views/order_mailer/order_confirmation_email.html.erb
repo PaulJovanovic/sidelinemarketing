@@ -11,7 +11,7 @@
     <ul>
       <% @order.event_purchase_options.each do |option| %>
         <li>
-          (<%= option.quantity %>) <%= option.event_purchase.pluralize(option.quantity) %> - <%= number_to_currency option.price %>
+          (<%= option.quantity %>) <%= option.event_purchase.name.pluralize(option.quantity) %> - <%= number_to_currency option.price %>
         </li>
       <% end %>
     </ul>
