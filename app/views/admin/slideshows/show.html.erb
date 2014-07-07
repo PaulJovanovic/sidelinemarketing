@@ -7,7 +7,7 @@
     <div class="mtm">
       <table class="full-width">
         <tbody class="js-sortable" data-url=<%= placements_admin_slideshow_slides_url(@slideshow) %>>
-          <% @slideshow.slides.each_with_index do |slide, index| %>
+          <% @slideshow.slides.order(:placement).each_with_index do |slide, index| %>
             <tr id="<%= "sortable-#{slide.id}" %>" class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
               <td class="phxxxs pvxs">
                 <i class="fa fa-arrows"></i>

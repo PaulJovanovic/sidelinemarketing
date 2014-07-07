@@ -89,5 +89,7 @@ $(document).ready(function() {
   $(".js-use-billing-address").click(function() {
     $($(this).data("target")).toggle(!this.checked);
   });
-  $($(".js-use-billing-address").data("target")).toggle(!$(".js-use-billing-address")[0].checked);
+  if ($(".js-use-billing-address").length > 0) {
+    $($(".js-use-billing-address").data("target")).toggle(!$(".js-use-billing-address")[0].checked);
+  }
 });
