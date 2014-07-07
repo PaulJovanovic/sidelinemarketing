@@ -2,7 +2,7 @@
   <div class="container phxs relative zxs bg-repeat-n js-slide-background" style="background-position: bottom right;background-size: auto 100%;padding-bottom: 120px;">
     <div class="hide">
       <% if @slideshow %>
-        <% @slideshow.slides.each do |slide| %>
+        <% @slideshow.slides.order(:placement).each do |slide| %>
           <%= image_tag slide.url(:original), class: "js-slide-background-image" %>
         <% end %>
       <% end %>

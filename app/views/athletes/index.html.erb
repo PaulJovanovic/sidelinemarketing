@@ -20,7 +20,7 @@
 <div class="dvxs lhxs mtxs c-8 fsxxxs fwl italicize"></div>
 <% if @slideshow && @slideshow.slides.any? %>
   <div class="js-slideshow">
-    <% @slideshow.slides.each do |slide| %>
+    <% @slideshow.slides.order(:placement).each do |slide| %>
       <div class="relative">
         <%= image_tag slide.url(:medium), class: "img-responsive" %>
         <div class="absolute bottom right phs pvxxxs mbl bg-1 c-16 fss italicize upcase">
