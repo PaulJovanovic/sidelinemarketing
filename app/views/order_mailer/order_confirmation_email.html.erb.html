@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your order!</h1>
+    <p>
+      You purchased the following:
+    </p>
+    <ul>
+      <% @order.event_purchase_options.each do |option| %>
+        <li>
+          (<%= option.quantity %>) <%= option.event_purchase.pluralize(option.quantity) %> - <%= number_to_currency option.price %>
+        </li>
+      <% end %>
+    </ul>
+    <p>
+      For a total of <b><%= number_to_currency @order.price %></b>
+    </p>
+  </body>
+</html>

@@ -78,6 +78,9 @@
     </div>
   </div>
   <div class="col-md-4 phs mtl">
+    <% if flash[:notice].present? %>
+      <div class="c-red"><%= flash[:notice] %></div>
+    <% end %>
     <div class="c-1 fsxs fwl italicize">
       GENERAL INQUIRIES
     </div>

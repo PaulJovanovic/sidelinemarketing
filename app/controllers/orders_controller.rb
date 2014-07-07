@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
+      OrderMailer.order_confirmation_email(@order).deliver
       redirect_to confirmation_event_orders_path
     else
       render :new
