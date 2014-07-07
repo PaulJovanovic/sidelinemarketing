@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='text/html; charset=UTF=8' http-equiv='Content-Type' />
   </head>
   <body>
     <h2>Thank you for your order!</h2>
-    ----------------------------------
+    ==================================
     <p>
       <b><%= @order.event.name %><b>
     </p>
@@ -20,19 +20,39 @@
         <%= @order.event.location_city %>, <%= @order.event.location_state %>, <%= @order.event.location_zip %>
       </div>
     </p>
-    ----------------------------------
+    ==================================
     <p>
       You purchased the following:
     </p>
     <ul>
       <% @order.event_purchase_options.each do |option| %>
         <li>
-          (<%= option.quantity %>) <%= option.event_purchase.name.pluralize(option.quantity) %> - <%= number_to_currency option.price %>
+          (<%= option.quantity %>) <%= option.event_purchase.name.pluralize(option.quantity) %> = <%= number_to_currency option.price %>
         </li>
       <% end %>
     </ul>
     <p>
       For a total of <b><%= number_to_currency @order.price %></b>
+    </p>
+    ==================================
+    <p>
+      Your purchase will be shipping to the following address:
+    </p>
+    <p style="margin-top: 10px">
+      <div>
+        <%= @order.shipping_address.first_name %> <%= @order.shipping_address.last_name %>
+      </div>
+      <div>
+        <%= @order.shipping_address.address_1 %>
+      </div>
+      <% if @order.shipping_address.address_2.present? %>
+        <div>
+          <%= @order.shipping_address.address_2 %>
+        </div>
+      <% end %>
+      <div>
+        <%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %> USA
+      </div>
     </p>
   </body>
 </html>
