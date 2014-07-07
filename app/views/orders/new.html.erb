@@ -52,39 +52,42 @@
         </div>
       <% end %>
       <div class="mts fss fwl italicize">SHIPPING ADDRESS</div>
-      <%= f.fields_for :shipping_address do |shipping_address_fields| %>
-        <div class="row nmhxs">
-          <div class="col-sm-6 phxs mts">
-            <%= shipping_address_fields.text_field :first_name, placeholder: "First name", class: "paxxxs bss bwas bc-8 full-width" %>
+      <%= f.check_box :use_billing_address, { class: "js-use-billing-address", data: { target: "#shipping-address" } }, "1", "0" %> Use Billing Address
+      <div id="shipping-address">
+        <%= f.fields_for :shipping_address do |shipping_address_fields| %>
+          <div class="row nmhxs">
+            <div class="col-sm-6 phxs mts">
+              <%= shipping_address_fields.text_field :first_name, placeholder: "First name", class: "paxxxs bss bwas bc-8 full-width" %>
+            </div>
+            <div class="col-sm-6 phxs mts">
+              <%= shipping_address_fields.text_field :last_name, placeholder: "Last name", class: "paxxxs bss bwas bc-8 full-width" %>
+            </div>
           </div>
-          <div class="col-sm-6 phxs mts">
-            <%= shipping_address_fields.text_field :last_name, placeholder: "Last name", class: "paxxxs bss bwas bc-8 full-width" %>
+          <div class="row nmhxs">
+            <div class="col-sm-6 phxs mts">
+              <%= shipping_address_fields.text_field :address_1, placeholder: "Address 1", class: "paxxxs bss bwas bc-8 full-width" %>
+            </div>
+            <div class="col-sm-6 phxs mts">
+              <%= shipping_address_fields.text_field :address_2, placeholder: "Address 2", class: "paxxxs bss bwas bc-8 full-width" %>
+            </div>
           </div>
-        </div>
-        <div class="row nmhxs">
-          <div class="col-sm-6 phxs mts">
-            <%= shipping_address_fields.text_field :address_1, placeholder: "Address 1", class: "paxxxs bss bwas bc-8 full-width" %>
-          </div>
-          <div class="col-sm-6 phxs mts">
-            <%= shipping_address_fields.text_field :address_2, placeholder: "Address 2", class: "paxxxs bss bwas bc-8 full-width" %>
-          </div>
-        </div>
-        <div class="row nmhxs">
-          <div class="col-sm-6 phxs mts">
-            <%= shipping_address_fields.text_field :city, placeholder: "City", class: "paxxxs bss bwas bc-8 full-width" %>
-          </div>
-          <div class="col-sm-6 phxs mts">
-            <div class="row nmhxs">
-              <div class="col-xs-6 phxs">
-                <%= shipping_address_fields.select :state, options_for_select(us_states), {prompt: "State"}, class: "dvs bg-16 bss bwas bc-8 full-width" %>
-              </div>
-              <div class="col-xs-6 phxs">
-                <%= shipping_address_fields.text_field :zip, placeholder: "Zip code", class: "paxxxs bss bwas bc-8 full-width" %>
+          <div class="row nmhxs">
+            <div class="col-sm-6 phxs mts">
+              <%= shipping_address_fields.text_field :city, placeholder: "City", class: "paxxxs bss bwas bc-8 full-width" %>
+            </div>
+            <div class="col-sm-6 phxs mts">
+              <div class="row nmhxs">
+                <div class="col-xs-6 phxs">
+                  <%= shipping_address_fields.select :state, options_for_select(us_states), {prompt: "State"}, class: "dvs bg-16 bss bwas bc-8 full-width" %>
+                </div>
+                <div class="col-xs-6 phxs">
+                  <%= shipping_address_fields.text_field :zip, placeholder: "Zip code", class: "paxxxs bss bwas bc-8 full-width" %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <div class="mts fss fwl italicize">PAYMENT</div>
       <div class="row nmhxs">
         <div class="col-sm-6 phxs mts">

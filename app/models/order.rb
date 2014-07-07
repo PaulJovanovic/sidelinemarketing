@@ -11,9 +11,10 @@ class Order < ActiveRecord::Base
   validates :email, :phone_number, :event_purchase_options, :credit_card_name, :credit_card_number, :credit_card_expiration_month, :credit_card_expiration_year, :credit_card_security_code, presence: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
+  before_validation :use_billing_address_for_shipping, if: :use_billing_address_selected?
   before_create :purchase
 
-  attr_accessor :credit_card_name, :credit_card_number, :credit_card_expiration_month, :credit_card_expiration_year, :credit_card_security_code
+  attr_accessor :credit_card_name, :credit_card_number, :credit_card_expiration_month, :credit_card_expiration_year, :credit_card_security_code, :use_billing_address
 
   def price
     total = Money.new(0)
@@ -24,6 +25,14 @@ class Order < ActiveRecord::Base
   end
 
   private
+
+  def use_billing_address_selected?
+    use_billing_address == "1"
+  end
+
+  def use_billing_address_for_shipping
+    self.shipping_address = billing_address
+  end
 
   def purchase
     # mode = Rails.env.development? ? "TEST" : "LIVE"
