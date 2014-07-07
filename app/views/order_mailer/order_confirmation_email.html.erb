@@ -4,7 +4,23 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thank you for your order!</h1>
+    <h2>Thank you for your order!</h2>
+    ----------------------------------
+    <p>
+      <b><%= @order.event.name %><b>
+    </p>
+    <p style="margin-top: 10px">
+      <div>
+        <%= @order.event.location_name %>
+      </div>
+      <div>
+        <%= @order.event.location_street %>
+      </div>
+      <div>
+        <%= @order.event.location_city %>, <%= @order.event.location_state %>, <%= @order.event.location_zip %>
+      </div>
+    </p>
+    ----------------------------------
     <p>
       You purchased the following:
     </p>
