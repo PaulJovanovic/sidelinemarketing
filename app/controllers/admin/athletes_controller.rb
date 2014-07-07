@@ -39,7 +39,11 @@ class Admin::AthletesController < AdminController
   end
 
   def destroy
+    @athlete = Athlete.find(params[:id])
+    @team = Team.find(params[:team_id])
 
+    @athlete.destroy
+    redirect_to admin_organization_team_path(@team.organization, @team)
   end
 
   private

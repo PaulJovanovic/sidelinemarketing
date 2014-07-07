@@ -38,6 +38,13 @@ class Admin::OrganizationsController < AdminController
     end
   end
 
+  def destroy
+    @organization = Organization.find(params[:id])
+
+    @organization.destroy
+    redirect_to admin_organizations_path
+  end
+
   def placements
     params[:sortable].each_with_index do |id, index|
       Organization.find(id).update_column(:placement, index + 1)

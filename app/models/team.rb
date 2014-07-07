@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   belongs_to :organization
-  has_many :athletes
+  has_many :athletes, dependent: :destroy
 
   validates :organization_id, presence: true
 

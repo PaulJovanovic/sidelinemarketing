@@ -41,7 +41,11 @@ class Admin::TeamsController < AdminController
   end
 
   def destroy
+    @team = Team.find(params[:id])
+    @organization = Organization.find(params[:organization_id])
 
+    @team.destroy
+    redirect_to admin_organization_path(@organization)
   end
 
   def placements

@@ -38,6 +38,13 @@ class Admin::GalleriesController < AdminController
     end
   end
 
+  def destroy
+    @gallery = Gallery.find(params[:id])
+
+    @gallery.destroy
+    redirect_to admin_galleries_path
+  end
+
   def placements
     params[:sortable].each_with_index do |id, index|
       Gallery.find(id).update_column(:placement, index + 1)
