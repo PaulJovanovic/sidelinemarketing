@@ -37,7 +37,7 @@ class Admin::SlidesController < AdminController
     @slide = Slide.find(params[:id])
     @slideshow = Slideshow.find(params[:slideshow_id])
 
-    @organization.destroy
+    @slide.destroy
     redirect_to admin_slideshow_path(@slideshow)
   end
 
