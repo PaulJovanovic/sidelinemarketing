@@ -5,8 +5,10 @@
         <%= link_to gallery_path(gallery) do %>
           <div class="relative">
             <%= image_tag gallery.photos.first.attachment.url(:medium), class: "img-responsive" %>
-            <div class="absolute right bottom mbl paxxxs bg-1 c-16 fsxxs italicize upcase">
-              <%= gallery.name %>
+            <div class="absolute left right bottom mbl nowrap text-right">
+              <div class="phxs pvxxxs bg-1 c-16 fsxxs fwl italicize upcase pull-right nowrap" style="overflow: hidden;text-overflow: ellipsis;max-width: 100%">
+                <%= gallery.name %>
+              </div>
             </div>
           </div>
         <% end %>

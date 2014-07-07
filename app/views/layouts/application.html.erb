@@ -63,14 +63,6 @@
   <div class="container phm pbxxxxl mtxs">
     <%= yield %>
   </div>
-  <div class="container phm pvm text-center c-11 italicize">
-    <div class="">&copy; 2014 SIDELINE MARKETING, LLC</div>
-    <div class=""><%= link_to "ADMIN PANEL", admin_orders_path %></div>
-    <div class="mtxxxs">
-      <%= link_to "http://cupofhunks.com" do %>
-        <%= image_tag "cup.png" %>
-      <% end %>
-    </div>
-  </div>
+  <%= render partial: "layouts/footer" %>
 </body>
 </html>

@@ -8,8 +8,10 @@
         <%= link_to event_path(event) do %>
           <div class="relative">
             <%= image_tag event.poster.url(:small), class: "img-responsive" %>
-            <div class="absolute right bottom mbl paxxxs bg-1 c-16 fsxxs italicize upcase<%= " bg-red" if event.private? %>">
-              <%= event.name %>
+            <div class="absolute left right bottom mbl nowrap text-right">
+              <div class="phxs pvxxxs bg-1 c-16 fsxxs fwl italicize upcase pull-right nowrap<%= " bg-red" if event.private? %>" style="overflow: hidden;text-overflow: ellipsis;max-width: 100%">
+                <%= event.name %>
+              </div>
             </div>
           </div>
         <% end %>

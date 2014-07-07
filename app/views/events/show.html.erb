@@ -33,7 +33,7 @@
     <div class="mtl">
       <%= @event.description_as_html.html_safe %>
     </div>
-    <div class="mtl bss bwtm bc-12"></div>
+    <div class="mtl bss bwts bc-12"></div>
     <%= form_for :order, url: new_event_order_path(@event), method: :get do |f| %>
       <% @event.purchases.order(:placement).each do |purchase| %>
         <div class="mtl">

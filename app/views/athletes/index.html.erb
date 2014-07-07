@@ -1,6 +1,6 @@
 <% array = [] %>
 <% @organizations.each do |organization| %>
-  <% array << "<div class='c-red fwl fsxs italicize'>#{organization.name}</div>" %>
+  <% array << "<div class='c-red fwl fsxs italicize mbxxxs'>#{organization.name}</div>" %>
   <% organization.teams.order(:placement).each do |team| %>
     <% if team.name.present? %>
       <% array << "<div class='c-1 fsxxs fwl'>#{team.name}</div>" %>
@@ -12,7 +12,7 @@
 <% end %>
 <% max = (array.length / 4.0).ceil %>
 <% column_count = [max,max,max,max] %>
-<% if array.length % 4 %>
+<% if array.length % 4 > 0 %>
   <% (4 - array.length % 4).times do |i| %>
     <% column_count[3-i] = column_count[3-i] - 1 %>
   <% end %>
@@ -33,7 +33,7 @@
 <div class="nmtm c-8 fsxxxs italicize">
   ATHLETES WE HAVE WORKED WITH
 </div>
-<div class="row nmhxxs mts">
+<div class="row nmhxxs mts lhxs">
   <% column_count.each do |count| %>
     <div class="col-sm-3 phxxs">
       <% array.shift(count).each do |item| %>
