@@ -34,7 +34,19 @@ class Admin::SlidesController < AdminController
   end
 
   def destroy
+    @slide = Slide.find(params[:id])
+    @slideshow = Slideshow.find(params[:slideshow_id])
 
+    @organization.destroy
+    redirect_to admin_slideshow_path(@slideshow)
+  end
+
+  def placements
+    params[:sortable].each_with_index do |id, index|
+      Slide.find(id).update_column(:placement, index + 1)
+    end
+
+    render json: true
   end
 
   private

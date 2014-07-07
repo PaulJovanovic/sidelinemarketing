@@ -6,21 +6,28 @@
     <%= link_to "Add Slide", new_admin_slideshow_slide_path(@slideshow), class: "btn btn-primary" %>
     <div class="mtm">
       <table class="full-width">
-        <% @slideshow.slides.each_with_index do |slide, index| %>
-          <tr class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
-            <td class="phxxxs pvxs">
-              <i class="fa fa-arrows"></i>
-            </td>
-            <td class="phxxxs pvxs fwl full-width">
-              <%= slide.name %>
-            </td>
-            <td class="phxxxs pvxs">
-              <%= link_to edit_admin_slideshow_slide_path(@slideshow, slide), class: "btn btn-primary" do %>
-                <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+        <tbody class="js-sortable" data-url=<%= placements_admin_slideshow_slides_url(@slideshow) %>>
+          <% @slideshow.slides.each_with_index do |slide, index| %>
+            <tr id="<%= "sortable-#{slide.id}" %>" class="pas<%= index % 2 == 0 ? " bg-13" : " bg-12" %>">
+              <td class="phxxxs pvxs">
+                <i class="fa fa-arrows"></i>
+              </td>
+              <td class="phxxxs pvxs fwl full-width">
+                <%= slide.name %>
+              </td>
+              <td class="phxxxs pvxs">
+                <%= link_to edit_admin_slideshow_slide_path(@slideshow, slide), class: "btn btn-primary" do %>
+                  <i class="fa fa-edit"></i> <span class="hidden-xs">Edit</span>
+                <% end %>
+              </td>
+              <td class="phxxxs pvxs">
+                <%= link_to admin_slideshow_slide_path(@slideshow, slide), method: :delete, data: { confirm: "Are you sure you want to delete this slide?" }, class: "btn btn-primary" do %>
+                  <i class="fa fa-times"></i> <span class="hidden-xs">Delete</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
