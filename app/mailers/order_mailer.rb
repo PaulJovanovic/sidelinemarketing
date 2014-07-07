@@ -3,7 +3,6 @@ class OrderMailer < ActionMailer::Base
 
   def order_confirmation_email(order)
     @order = order
-    @url  = "http://example.com/login"
     mail(to: @order.email, subject: "Sideline Marketing Order ##{@order.id}")
   end
 end
