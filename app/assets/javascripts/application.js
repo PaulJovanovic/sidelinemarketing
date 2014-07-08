@@ -92,4 +92,16 @@ $(document).ready(function() {
   if ($(".js-use-billing-address").length > 0) {
     $($(".js-use-billing-address").data("target")).toggle(!$(".js-use-billing-address")[0].checked);
   }
+
+  $(document).ready(function() {
+    $('.js-lightbox').magnificPopup({type:'image'});
+  });
+});
+
+$(window).load(function() {
+  var $container = $('#masonry-container');
+  // initialize
+  $container.masonry({
+    itemSelector: '.item'
+  });
 });
