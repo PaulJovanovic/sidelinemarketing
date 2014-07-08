@@ -9,6 +9,14 @@
     <p>
       <b><%= @order.event.name %><b>
     </p>
+    <p>
+      <div>
+        <%= @order.event.date.strftime("%m/%d/%Y") %>
+      </div>
+      <div>
+        <%= @order.event.start_time %> - <%= @order.event.end_time %>
+      </div>
+    </p>
     <p style="margin-top: 10px">
       <div>
         <%= @order.event.location_name %>
