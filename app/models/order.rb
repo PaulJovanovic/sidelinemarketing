@@ -36,7 +36,7 @@ class Order < ActiveRecord::Base
 
   def purchase
     # mode = Rails.env.development? ? "TEST" : "LIVE"
-    payment = BluePay.new(ENV["MERCHANT_ACCOUNT_ID"], ENV["MERCHANT_ACCOUNT_SECRET"], "TEST")
+    payment = BluePay.new(ENV["MERCHANT_ACCOUNT_ID"], ENV["MERCHANT_ACCOUNT_SECRET"], "LIVE")
 
     payment.set_cc_information(credit_card_number.tr(" ", ""), "#{credit_card_expiration_month}#{credit_card_expiration_year[2,2]}", credit_card_security_code)
 
