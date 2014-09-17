@@ -1,5 +1,10 @@
 <div class="dvm lhm">
   Orders
+  <div class="pull-right">
+    <%= link_to admin_orders_path(format: :csv), class: "c-red" do %>
+      <i class="fa fa-download"></i> CSV
+    <% end %>
+  </div>
 </div>
 <div class="phxs">
   <div class="row nmhxxxs">

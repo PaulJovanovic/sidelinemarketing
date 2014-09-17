@@ -1,3 +1,4 @@
+require "csv"
 require "bluepay"
 
 class Order < ActiveRecord::Base
@@ -15,6 +16,17 @@ class Order < ActiveRecord::Base
   before_create :purchase
 
   attr_accessor :credit_card_name, :credit_card_number, :credit_card_expiration_month, :credit_card_expiration_year, :credit_card_security_code, :use_billing_address
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ["Order Number", "Date", "Email", "Phone Number", "Event", "Price", "Options", "Billing Name", "Billing Address", "Billing City", "Billing State", "Billing Postal", "Shipping Name", "Shipping Address", "Shipping City", "Shipping State", "Shipping Postal"]
+      all.each do |order|
+        billing = order.billing_address
+        shipping = order.shipping_address
+        csv << [order.id, order.created_at.strftime("%m/%d/%y"), order.email, order.phone_number, order.event.name, order.price, order.event_purchase_options.map{|purchase_option| "#{purchase_option.event_purchase.name} x(#{purchase_option.quantity})"}.join(", "), "#{billing.first_name} #{billing.last_name}", "#{billing.address_1} #{billing.address_2}", billing.city, billing.state, billing.zip, "#{shipping.first_name} #{shipping.last_name}", "#{shipping.address_1} #{shipping.address_2}", shipping.city, shipping.state, shipping.zip]
+      end
+    end
+  end
 
   def price
     total = Money.new(0)
