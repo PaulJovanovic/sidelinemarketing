@@ -5,7 +5,7 @@ class Admin::OrdersController < AdminController
     @orders = Order.all.includes(:event).paginate(page: params[:page], per_page: 25).order("created_at desc")
     respond_to do |format|
       format.html
-      format.csv { send_data @orders.to_csv }
+      format.csv { send_data Order.all.order("created_at desc").to_csv }
     end
   end
 
