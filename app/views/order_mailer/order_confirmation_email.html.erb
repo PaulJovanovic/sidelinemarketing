@@ -44,23 +44,7 @@
     </p>
     =============================
     <p>
-      Your purchase will be shipping to the following address:
-    </p>
-    <p style="margin-top: 10px">
-      <div>
-        <%= @order.shipping_address.first_name %> <%= @order.shipping_address.last_name %>
-      </div>
-      <div>
-        <%= @order.shipping_address.address_1 %>
-      </div>
-      <% if @order.shipping_address.address_2.present? %>
-        <div>
-          <%= @order.shipping_address.address_2 %>
-        </div>
-      <% end %>
-      <div>
-        <%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %> USA
-      </div>
+      Your purchase will be available at will call.
     </p>
   </body>
 </html>
