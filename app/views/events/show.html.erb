@@ -56,7 +56,11 @@
       </div>
       <div class="row nmhxxs">
         <div class="col-sm-5 col-md-4 phxxs mtxs">
-          <%= f.submit "PURCHASE", class: "btn btn-primary full-width", data: { disable_with: "submitting" } %>
+          <% if @event.published == true && @event.active == true %>
+            <%= f.submit "PURCHASE", class: "btn btn-primary full-width", data: { disable_with: "submitting" } %>
+          <% else %>
+            <%= f.submit "SOLD OUT", class: "btn btn-primary disabled full-width", disabled: true %>
+          <% end %>
         </div>
       </div>
     <% end %>
